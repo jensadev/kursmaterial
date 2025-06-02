@@ -4,8 +4,8 @@ title: Webbserver
 
 # webbserver
 
-{% for file in site.static_files %}
-    {% if file.path contains 'webbserver/' %}
-        - [{{ file.path | replace: 'webbserver/', '' }}]({{ file.path }})
+{% for file in collections.all %}
+    {% if "webbserver/" in file.inputPath %}
+        - [{{ file.page.fileSlug }}]({{ file.url }})
     {% endif %}
 {% endfor %}
