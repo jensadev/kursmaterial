@@ -1,5 +1,7 @@
-export default async function (eleventyConfig) {
+import eleventyNavigationPlugin from "@11ty/eleventy-navigation"
 
+export default async function (eleventyConfig) {
+    eleventyConfig.addPlugin(eleventyNavigationPlugin)
     eleventyConfig.addPassthroughCopy("./css");
 
     return {

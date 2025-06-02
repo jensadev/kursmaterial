@@ -1,7 +1,15 @@
 {% extends "base.njk" %}
 
+{% block nav %}
+<nav class="wrapper region">
+    {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({ maxDepth: 1 }) | safe }}
+</nav>
+{% endblock %}
+
 {% block content %}
 <main class="wrapper">
-    {{ content | safe }}
+    <article class="flow">
+        {{ content | safe }}
+    </article>
 </main>
 {% endblock %}

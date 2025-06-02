@@ -1,3 +1,10 @@
+---
+title: Nunjucks
+eleventyNavigation:
+    key: nunjucks
+    parent: webbserver
+---
+
 # Nunjucks
 
 Statiska HTML filer i all ära men de stora vinsterna i att köra en webbserver är att kunna skapa dynamiska sidor. För att göra detta så kan vi använda ett templating språk som heter Nunjucks.

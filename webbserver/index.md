@@ -1,11 +1,6 @@
 ---
 title: Webbserver
+eleventyNavigation:
+    key: webbserver
+    parent: kursmaterial
 ---
-
-# webbserver
-
-{% for file in collections.all %}
-    {% if "webbserver/" in file.inputPath %}
-        - [{{ file.page.fileSlug }}]({{ file.url }})
-    {% endif %}
-{% endfor %}

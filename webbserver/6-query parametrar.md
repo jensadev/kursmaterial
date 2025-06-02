@@ -1,3 +1,9 @@
+---
+title: Query parametrar
+eleventyNavigation:
+    key: query parametrar
+    parent: webbserver
+---
 
 ## Query parametrar
 

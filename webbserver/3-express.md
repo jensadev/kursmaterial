@@ -1,3 +1,10 @@
+---
+title: Express
+eleventyNavigation:
+    key: express
+    parent: webbserver
+---
+
 # Express
 
 I förra delen så skrev vi Hello World i Node.js. Nu ska vi bygga vidare på det och skapa en webbserver med Express.
@@ -8,7 +15,7 @@ Det här handlar alltså om att lära sig använda Express i Javascript. Kom ih�
 
 ## Installera Express
 
-Vi kommer att installera Express i samma projekt som tidigare. Om du inte har ett projekt se avsnitt [2 hello_node](2-hello_node.md).
+Vi kommer att installera Express i samma projekt som tidigare. Om du inte har ett projekt se avsnitt [2 hello_node](../2-hello_node).
 
 För att installera Express så kör vi följande kommando i terminalen:
 

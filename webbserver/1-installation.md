@@ -1,8 +1,15 @@
+---
+title: Installation
+eleventyNavigation:
+    key: installation
+    parent: webbserver
+---
+
 # Installation
 
 För att komma igång och skriva en webbserver behöver vi installera några verktyg och program. 
 
-## Installation
+## WSL2
 
 Vi behöver WSL2 för att köra node, eller det gör livet enklare, bättre och snabbare.
 Guide till att installera WSL2 finns här: [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)

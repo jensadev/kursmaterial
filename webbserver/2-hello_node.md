@@ -1,3 +1,10 @@
+---
+title: Node
+eleventyNavigation:
+    key: node
+    parent: webbserver
+---
+
 # Node
 
 Innan du fortsätter så se till att du har installerat Node med NVM.
