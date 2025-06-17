@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
     {% block nav %}
     {% endblock %}
@@ -14,5 +16,8 @@
     <footer class="wrapper region">
         &copy; Jens Andreasson 2025
     </footer>
+    <script src="{{ "/js/elasticlunr.min.js" | url }}"></script>
+    <script src="/js/search.js"></script>
 </body>
+
 </html>

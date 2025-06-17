@@ -2,6 +2,7 @@
 
 {% block nav %}
 <nav class="wrapper region">
+    {% include "search.njk" %}
     {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({ maxDepth: 1 }) | safe }}
 </nav>
 {% endblock %}
