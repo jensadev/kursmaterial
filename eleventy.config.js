@@ -1,4 +1,5 @@
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation"
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight"
 import elasticlunr from "elasticlunr"
 
 const searchFilter = async (collection) => {
@@ -34,14 +35,16 @@ const searchFilter = async (collection) => {
 
 export default async function (eleventyConfig) {
     eleventyConfig.addPlugin(eleventyNavigationPlugin)
-    eleventyConfig.addPassthroughCopy("./css");
-    eleventyConfig.addPassthroughCopy("./js");
+    eleventyConfig.addPassthroughCopy("./css")
+    eleventyConfig.addPassthroughCopy("./js")
 
     eleventyConfig.addFilter("searchIndex", searchFilter)
 
     eleventyConfig.addCollection("search", collection => {
         return [...collection.getFilteredByGlob("./content/**/*.md")];
-    });
+    })
+
+    eleventyConfig.addPlugin(syntaxHighlight)
 
     return {
         markdownTemplateEngine: "njk",

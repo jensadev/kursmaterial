@@ -55,7 +55,6 @@ body {
     margin-right: auto;
     padding-left: var(--gutter);
     padding-right: var(--gutter);
-    position: relative;
 }
 
 .flow>*+* {
@@ -74,4 +73,58 @@ nav {
 
 nav>ul {
     padding-inline-start: var(--gutter);
+}
+
+.search-modal {
+    position: relative;
+}
+
+.search-modal-results {
+    position: absolute;
+    color: fieldtext;
+    background-color: field;
+    width: 100%;
+    border: 1px solid var(--color-fg);
+    padding: var(--space-xs);
+    border-radius: var(--border-radius);
+
+    li {
+        display: block;
+        width: 100%;
+
+        :hover:not(p) {
+            text-decoration: underline;
+        }
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+form {
+
+    input,
+    textarea {
+        width: 100%;
+        padding: var(--space-2xs);
+        margin-top: var(--space-3xs-2xs);
+        border-radius: var(--border-radius);
+    }
+
+    *:focus {
+        color: var(--color-fg);
+        outline-color: var(--color-secondary);
+    }
+}
+
+.sr-only {
+    clip: rect(0 0 0 0);
+    padding: 0;
+    margin: -1;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
