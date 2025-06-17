@@ -1,5 +1,7 @@
 ---
 title: Nunjucks
+summary: Lär dig hur du använder Nunjucks som templating språk i Express för att skapa dynamiska HTML-sidor.
+tags: [nunjucks, express, javascript]
 eleventyNavigation:
     key: nunjucks
     parent: webbserver

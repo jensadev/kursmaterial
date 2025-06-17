@@ -1,5 +1,7 @@
 ---
 title: Express
+summary: Lär dig grunderna i Express, hur du skapar en webbserver och hanterar statiska filer.
+tags: [express, javascript]
 eleventyNavigation:
     key: express
     parent: webbserver
