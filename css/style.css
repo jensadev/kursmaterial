@@ -40,12 +40,22 @@
     --gutter: 1em;
     --color-dark: #333;
     --color-light: #f0f0f0;
+
+    --color-fg: var(--color-dark);
+    --color-bg: var(--color-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: var(--color-dark);
+        --color-fg: var(--color-light);
+    }
 }
 
 body {
     font-family: sans-serif;
-    background-color: var(--color-light);
-    color: var(--color-dark);
+    background-color: var(--color-bg);
+    color: var(--color-fg);
     font-size: 1.2rem;
 }
 
