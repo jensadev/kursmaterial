@@ -39,6 +39,11 @@ export default async function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./js")
 
     eleventyConfig.addFilter("searchIndex", searchFilter)
+    eleventyConfig.addFilter("test", (data) => {
+        console.log("test filter called")
+        console.log(data)
+        return data
+    })
 
     eleventyConfig.addCollection("search", collection => {
         return [...collection.getFilteredByGlob("./content/**/*.md")];

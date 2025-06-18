@@ -1,6 +1,6 @@
 ---
 title: Kursmaterial
-layout: page.njk
+layout: index.njk
 eleventyNavigation:
     key: kursmaterial
 ---

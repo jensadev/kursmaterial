@@ -1,0 +1,28 @@
+{% macro renderNavListItem(entry, depth) -%}
+    {% if depth > 0 %}
+        {% if entry.title == "kursmaterial" %}
+            {%- for child in entry.children %}{{ renderNavListItem(child, depth - 1) }}{% endfor -%}
+        {% else %}
+            <li{% if entry.url==page.url %} class="my-active-class" {% endif %}>
+                <a href="{{ entry.url }}">{{ entry.title }}</a>
+                {%- if entry.children.length and depth > 1 -%}
+                <ul>
+                    {%- for child in entry.children %}{{ renderNavListItem(child, depth - 1) }}{% endfor -%}
+                </ul>
+                {%- endif -%}
+            </li>
+        {% endif %}
+    {% endif %}
+{%- endmacro %}
+
+{% set navPages = collections.all | eleventyNavigation %}
+
+{%if page.url == "/" %}
+    <ul>
+        {%- for entry in navPages %}{{ renderNavListItem(entry, 2) }}{%- endfor -%}
+    </ul>
+{% else %}
+    <ul>
+        {%- for entry in navPages %}{{ renderNavListItem(entry, 5) }}{%- endfor -%}
+    </ul>
+{% endif %}

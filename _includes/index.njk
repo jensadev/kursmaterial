@@ -7,7 +7,7 @@
 {% block nav %}
     <nav class="wrapper region">
         {% include "search.njk" %}
-        {% set navPages = collections.all | eleventyNavigation(course) %}
+        {% set navPages = collections.all | eleventyNavigation("kursmaterial") %}
         {{ navPages | eleventyNavigationToHtml  | safe }}
     </nav>
 {% endblock %}

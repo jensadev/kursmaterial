@@ -1,7 +1,7 @@
 ---
-title: Introduktion
+title: Test
 eleventyNavigation:
-    key: introduktion
+    key: test
     parent: webbutveckling 1
 ---
 

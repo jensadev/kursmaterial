@@ -1,5 +1,6 @@
 {
     "layout": "page.njk",
     "tags": ["webbserver"],
+    "course": "webbserver",
     "permalink": "/webbserver/{{ title | slug }}/"
 }
