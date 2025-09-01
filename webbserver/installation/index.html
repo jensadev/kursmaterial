@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation</title>
+    <link rel="stylesheet" href="/kursmaterial/css/reset.css">
+    <link rel="stylesheet" href="/kursmaterial/css/style.css">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css" integrity="sha512-kSwGoyIkfz4+hMo5jkJngSByil9jxJPKbweYec/UgS+S1EgE45qm4Gea7Ks2oxQ7qiYyyZRn66A9df2lMtjIsw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    
+<nav class="wrapper region">
+    <div class="search-modal" id="search-modal">
+    <form class="search">
+        <label class="sr-only" for="search-input">Sök</label>
+        <input class="search-control" autocomplete="off" type="search" placeholder="Sök..." id="search-input"
+            aria-label="Sök" />
+    </form>
+    <ol id="search-results" class="search-modal-results flow hidden popout" aria-labelledby="search-input">
+    </ol>
+</div>
+    <ul><li><a href="/">kursmaterial</a><ul><li><a href="/programmering-1/">programmering 1</a><ul><li><a href="/programmering-1/introduktion/">introduktion</a></li></ul></li>
+<li><a href="/webbserver/">webbserver</a><ul><li><a href="/webbserver/installation/">installation</a></li>
+<li><a href="/webbserver/node/">node</a></li>
+<li><a href="/webbserver/express/">express</a></li>
+<li><a href="/webbserver/nunjucks/">nunjucks</a></li>
+<li><a href="/webbserver/layout-och-includes/">layout och includes</a></li>
+<li><a href="/webbserver/query-parametrar/">query parametrar</a></li></ul></li>
+<li><a href="/webbutveckling-1/">webbutveckling 1</a><ul><li><a href="/webbutveckling-1/introduktion/">introduktion</a></li></ul></li></ul></li></ul>
+</nav>
+
+    
+<main class="wrapper">
+    <article class="flow">
+        <h1>Installation</h1>
+<p>För att komma igång och skriva en webbserver behöver vi installera några verktyg och program.</p>
+<h2>WSL2</h2>
+<p>Vi behöver WSL2 för att köra node, eller det gör livet enklare, bättre och snabbare.
+Guide till att installera WSL2 finns här: <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">https://docs.microsoft.com/en-us/windows/wsl/install-win10</a></p>
+<p>WSL står för Windows Subsystem for Linux och är en Linux-kärna som körs i Windows. Detta gör att vi kan köra Linux-kommandon i Windows.
+Vi kommer att använda Ubuntu som Linux-distribution.</p>
+<h3>Installera Ubuntu</h3>
+<ol>
+<li>Öppna Microsoft Store</li>
+<li>Sök efter Ubuntu</li>
+<li>Klicka på Ubuntu (LTS är bra) och Installera</li>
+<li>Starta Ubuntu</li>
+<li>När prompten frågar, skapa ett användarnamn och lösenord (det viktigaste är att du kommer ihåg det)</li>
+</ol>
+<h4>Uppdatera Ubuntu</h4>
+<p>På samma sätt som Windows så är det viktigt att hålla operativsystemet uppdaterat för säkerhet och stabilitet.
+För att se till att Ubuntu är uppdaterat kör följande kommandon:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> update
+<span class="token function">sudo</span> <span class="token function">apt</span> upgrade</code></pre>
+<p>Sudo är <code>superuser do</code> och används för att köra kommandon som kräver administratörsrättigheter. Apt är ett verktyg (pakethanterare) för att installera och uppdatera program i Ubuntu.</p>
+<h3>Installera Node med NVM</h3>
+<p>NVM står för Node Version Manager och är ett verktyg för att installera och hantera olika versioner av Node.js.</p>
+<p><a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl">Guide</a> för att installera Node.js med NVM.</p>
+<h2>Linux commandon</h2>
+<p>Du har förhoppningsvis med dig lite cmdline kunskaper från tidigare. Det är bra om du förstår hur filsystemet är uppbyggt både på windows och linux. I filsystemet har du en root, som är den översta nivån, och under den finns olika mappar och filer. I Linux är filsystemet uppbyggt som en trädstruktur där allt börjar från root (/).
+Det finns ingen C:\ eller D:\ som i Windows, utan allt är en del av samma filsystem.</p>
+<p>För att navigera i filsystemet använder vi kommandon i terminalen. Här är några grundläggande kommandon som är bra att känna till:</p>
+<ul>
+<li>pwd - visar aktiv mapp</li>
+<li>ls - listar alla filer i mappen</li>
+<li>ll - visar även dolda filer, är ett alias för ls -la</li>
+<li>cd <mappnamn> ändrar mapp
+<ul>
+<li>cd .. - går upp en nivå i filsystemet</li>
+<li>cd eller cd ~ - går till hemkatalogen</li>
+</ul>
+</li>
+<li>mkdir <mappnamn> - skapar en ny mapp</li>
+<li>rm <filnamn> - tar bort en fil</li>
+<li>rm -r <mappnamn> - tar bort en mapp och dess innehåll</li>
+</ul>
+
+    </article>
+</main>
+
+    <footer class="wrapper region">
+        &copy; Jens Andreasson 2025
+    </footer>
+    <script src="/kursmaterial/js/elasticlunr.min.js"></script>
+    <script src="/kursmaterial/js/search.js"></script>
+</body>
+
+</html>

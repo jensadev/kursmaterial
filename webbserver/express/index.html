@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express</title>
+    <link rel="stylesheet" href="/kursmaterial/css/reset.css">
+    <link rel="stylesheet" href="/kursmaterial/css/style.css">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css" integrity="sha512-kSwGoyIkfz4+hMo5jkJngSByil9jxJPKbweYec/UgS+S1EgE45qm4Gea7Ks2oxQ7qiYyyZRn66A9df2lMtjIsw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    
+<nav class="wrapper region">
+    <div class="search-modal" id="search-modal">
+    <form class="search">
+        <label class="sr-only" for="search-input">Sök</label>
+        <input class="search-control" autocomplete="off" type="search" placeholder="Sök..." id="search-input"
+            aria-label="Sök" />
+    </form>
+    <ol id="search-results" class="search-modal-results flow hidden popout" aria-labelledby="search-input">
+    </ol>
+</div>
+    <ul><li><a href="/">kursmaterial</a><ul><li><a href="/programmering-1/">programmering 1</a><ul><li><a href="/programmering-1/introduktion/">introduktion</a></li></ul></li>
+<li><a href="/webbserver/">webbserver</a><ul><li><a href="/webbserver/installation/">installation</a></li>
+<li><a href="/webbserver/node/">node</a></li>
+<li><a href="/webbserver/express/">express</a></li>
+<li><a href="/webbserver/nunjucks/">nunjucks</a></li>
+<li><a href="/webbserver/layout-och-includes/">layout och includes</a></li>
+<li><a href="/webbserver/query-parametrar/">query parametrar</a></li></ul></li>
+<li><a href="/webbutveckling-1/">webbutveckling 1</a><ul><li><a href="/webbutveckling-1/introduktion/">introduktion</a></li></ul></li></ul></li></ul>
+</nav>
+
+    
+<main class="wrapper">
+    <article class="flow">
+        <h1>Express</h1>
+<p>I förra delen så skrev vi Hello World i Node.js. Nu ska vi bygga vidare på det och skapa en webbserver med Express.</p>
+<p>Express är ett ramverk för Node.js som gör det enklare att bygga webbapplikationer och API:er. Det är ett av de mest populära ramverken för Node.js och används av många stora företag.</p>
+<p>Det här handlar alltså om att lära sig använda Express i Javascript. Kom ihåg att din grundläggande programmeringskunskap är viktigt för att förstå Javascript. Express handlar till stor del om att lära sig använda ramverket och dess funktioner, snarare än att lära sig Javascript i sig.</p>
+<h2>Installera Express</h2>
+<p>Vi kommer att installera Express i samma projekt som tidigare. Om du inte har ett projekt se avsnitt <a href="../2-hello_node">2 hello_node</a>.</p>
+<p>För att installera Express så kör vi följande kommando i terminalen:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> express</code></pre>
+<p>Nu har vi installerat Express och kan börja använda det i vårt projekt.</p>
+<h2>Skapa en Express server</h2>
+<p>En Express server är en webbserver som kan hantera HTTP-förfrågningar och skicka svar tillbaka till klienten. För att skapa en Express server så behöver vi först importera Express och sedan skapa en instans av det.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">"express"</span> <span class="token comment">// ESM</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Nu har vi skapat en Express app som vi kan använda för att hantera HTTP-förfrågningar.</p>
+<p>För att starta servern så använder vi <code>app.listen()</code> metoden. Den tar emot en port som argument och startar servern på den porten.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token constant">PORT</span> <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span> <span class="token operator">||</span> <span class="token number">3000</span>
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token constant">PORT</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server is running on http://localhost:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">PORT</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Nu har vi en enkel Express server som lyssnar på port 3000. Du kan ändra porten genom att sätta miljövariabeln <code>PORT</code> eller så använder du standardporten 3000.</p>
+<h2>Skicka svar från servern</h2>
+<p>För att skicka svar från servern så använder vi <code>app.get()</code> metoden. Den tar emot en URL och en callback-funktion som körs när en GET-förfrågan görs till den URL:en.</p>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  response<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Nu har vi skapat en route som svarar med &quot;Hello World!&quot; när vi gör en GET-förfrågan till root-URL:en (&quot;/&quot;).</p>
+<p>Starta servern genom att köra <code>npm run dev</code> i terminalen. Detta kommer att starta servern med Nodemon, vilket innebär att den automatiskt startar om när du gör ändringar i koden.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> run dev</code></pre>
+<p>För att testa servern så kan du öppna en webbläsare och gå till <code>http://localhost:3000/</code>. Du bör se &quot;Hello World!&quot; i webbläsaren.</p>
+<h3>Viktigt</h3>
+<p>Den kod du just skrev kan du använda som grund för alla dina express projekt. Det är viktigt att du förstår hur Express fungerar och hur du kan använda det för att bygga webbapplikationer och API:er.</p>
+<h3>Statiska filer med public mapp</h3>
+<p>För att skicka statiska filer så används en mapp som heter public. Med statiska filer menas filer som inte ändras, som bilder, css och javascript filer. Dessa filer kan vi använda för att bygga en webbplats.
+För att använda en public mapp så behöver vi konfigurera Express att använda den mappen för statiska filer. Vi kan göra det med <code>express.static()</code> middleware.</p>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">static</span><span class="token punctuation">(</span><span class="token string">"public"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>För att sedan använda denna konfiguaration så skapar vi en mapp som heter <code>public</code> i vår projektmapp. Skapa mappen med kommandot <code>mkdir public</code> i terminalen.</p>
+<h3>HTML</h3>
+<p>Nu kan vi skapa en HTML-fil i public mappen. Skapa en fil som heter <code>index.html</code> i public mappen. Kör igång en grundläggande HTML struktur med <code>html:5</code> i VSCode och lägg sedan till följande kod i <code>index.html</code>:</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Hello World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Welcome to my Express server!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>Nu kan vi öppna <code>http://localhost:3000/</code> i webbläsaren och se vår HTML-fil. Notera att vi inte behöver ange <code>/public</code> i URL:en eftersom Express automatiskt letar efter filer i public mappen när vi använder <code>express.static()</code> middleware.</p>
+<h4>Middleware</h4>
+<p>Middleware är funktioner som körs innan eller efter en route. Middleware används för att utföra uppgifter som att logga request och response, validera data, autentisera användare och mycket mer.</p>
+<h3>CSS</h3>
+<p>Nu kan vi lägga till en CSS-fil som vi sedan kan använda i vår HTML-fil. Skapa en fil som heter <code>style.css</code> i public mappen. Lägg till följande kod i <code>style.css</code>:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.2rem<span class="token punctuation">;</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>För att använda css filen i din html fil så lägger du till en länk i head taggen.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/style.css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+<h2>Sammanfattning</h2>
+<p>I den här delen har vi lärt oss hur vi kan skapa en Express server, skicka svar från servern, använda statiska filer och skapa en HTML-fil med CSS. Vi har även lärt oss om middleware och hur vi kan använda det för att utföra uppgifter innan eller efter en route.</p>
+
+    </article>
+</main>
+
+    <footer class="wrapper region">
+        &copy; Jens Andreasson 2025
+    </footer>
+    <script src="/kursmaterial/js/elasticlunr.min.js"></script>
+    <script src="/kursmaterial/js/search.js"></script>
+</body>
+
+</html>

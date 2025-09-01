@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node</title>
+    <link rel="stylesheet" href="/kursmaterial/css/reset.css">
+    <link rel="stylesheet" href="/kursmaterial/css/style.css">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css" integrity="sha512-kSwGoyIkfz4+hMo5jkJngSByil9jxJPKbweYec/UgS+S1EgE45qm4Gea7Ks2oxQ7qiYyyZRn66A9df2lMtjIsw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    
+<nav class="wrapper region">
+    <div class="search-modal" id="search-modal">
+    <form class="search">
+        <label class="sr-only" for="search-input">Sök</label>
+        <input class="search-control" autocomplete="off" type="search" placeholder="Sök..." id="search-input"
+            aria-label="Sök" />
+    </form>
+    <ol id="search-results" class="search-modal-results flow hidden popout" aria-labelledby="search-input">
+    </ol>
+</div>
+    <ul><li><a href="/">kursmaterial</a><ul><li><a href="/programmering-1/">programmering 1</a><ul><li><a href="/programmering-1/introduktion/">introduktion</a></li></ul></li>
+<li><a href="/webbserver/">webbserver</a><ul><li><a href="/webbserver/installation/">installation</a></li>
+<li><a href="/webbserver/node/">node</a></li>
+<li><a href="/webbserver/express/">express</a></li>
+<li><a href="/webbserver/nunjucks/">nunjucks</a></li>
+<li><a href="/webbserver/layout-och-includes/">layout och includes</a></li>
+<li><a href="/webbserver/query-parametrar/">query parametrar</a></li></ul></li>
+<li><a href="/webbutveckling-1/">webbutveckling 1</a><ul><li><a href="/webbutveckling-1/introduktion/">introduktion</a></li></ul></li></ul></li></ul>
+</nav>
+
+    
+<main class="wrapper">
+    <article class="flow">
+        <h1>Node</h1>
+<p>Innan du fortsätter så se till att du har installerat Node med NVM.</p>
+<h2>Kom igång med Node</h2>
+<p>Skapa först en ny mapp för ditt projekt och navigera in i den. Du kan använda terminalen i Ubuntu eller Windows Terminal.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> mitt_node_projekt
+<span class="token builtin class-name">cd</span> mitt_node_projekt</code></pre>
+<p>För att initiera ett nytt node projekt kör du <code>npm init -y</code> i en mapp. Detta skapar en package.json fil. <code>-y</code> flaggan betyder att vi accepterar alla standardvärden utan att behöva svara på några frågor.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> init <span class="token parameter variable">-y</span></code></pre>
+<p>Resultatet blir en <code>package.json</code> fil som innehåller information om ditt projekt, inklusive dess beroenden och skript.
+Nu kan du skapa en fil som heter <code>server.js</code> och lägga in följande kod:</p>
+<pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello node!"</span><span class="token punctuation">)</span></code></pre>
+<p>För att avsluta node som körs tryck <code>ctrl + c</code> i terminalen.</p>
+<h3>Git och GitHub</h3>
+<p>Eftersom vi jobbar med kod är det bra att använda Git för versionshantering. Initiera projektet i VSCode eller i terminalen med följande kommando:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> init</code></pre>
+<p>Detta skapar en <code>.git</code> mapp i din projektmapp som innehåller all information om ditt git repository.</p>
+<p>När vi jobbar med Node så använder vi package.json för att hålla koll på vilka dependencies vi har i projektet. Syftet med filen är också att vi ska kunna dela vårt projekt med andra och att de ska kunna installera alla beroenden med ett enkelt kommando.</p>
+<p>Det gör också att vi inte vill lägga upp <code>node_modules</code> mappen på GitHub eftersom den kan bli väldigt stor och innehåller filer som inte är nödvändiga för att köra projektet.</p>
+<p>Därför skapar vi en <code>.gitignore</code> fil där vi listar de filer och mappar som vi inte vill ska läggas till i vårt git repository.
+Vi kan skapa en <code>.gitignore</code> fil med kommandot <code>touch .gitignore</code> i terminalen.
+eller genom att skapa en ny fil i VSCode.
+När filen är skapad så lägger du till <code>node_modules</code> i den filen för att ignorera den mappen.</p>
+<h2>Installera Nodemon</h2>
+<p>När vi jobbar med Node.js är det vanligt att vi vill ha en utvecklingsserver som automatiskt startar om när vi gör ändringar i koden. För detta ändamål använder vi ett verktyg som heter Nodemon.</p>
+<p>Nodemon övervakar förändringar i din källkod och startar automatiskt om servern när du sparar en fil.</p>
+<p>Installera Nodemon genom att köra:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> nodemon --save-dev</code></pre>
+<p>För att starta servern med Nodemon behöver du skapa ett script i <code>package.json</code>. Lägg till <code>&quot;dev&quot;: &quot;nodemon server.js&quot;</code> i <code>scripts</code> i <code>package.json</code> så att det ser ut så här (vi ser även till att nodemon lyssnar efter ändringar i njk filer):</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"dev"</span><span class="token operator">:</span> <span class="token string">"nodemon -e js,html,njk,json,css ./server.js"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3>Andra viktiga delar av package.json</h3>
+<p>I <code>package.json</code> samlar vi script för din server tillsammans med dependencies som du använder i ditt projekt.
+Det kan också vara bra att ange ett start script som kan användas för att starta servern i produktion. Lägg till <code>&quot;start&quot;: &quot;node server.js&quot;</code> i <code>scripts</code> så att det ser ut så här:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"dev"</span><span class="token operator">:</span> <span class="token string">"nodemon -e js,html,njk,json,css ./server.js"</span><span class="token punctuation">,</span>
+    <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"node server.js"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Du kan också ange versionen av Node.js som du använder i ditt projekt. Detta är ibland viktigt för att säkerställa att alla som arbetar med projektet använder samma version av Node.js. Om du får konstiga fel och har svårt att felsöka ditt projekt kan det vara värt att undersöka detta. Du kan kontrollera din Node version med <code>node -v</code>. Lägg till <code>&quot;engines&quot;: { &quot;node&quot;: &quot;&gt;=20&quot; }</code> i <code>package.json</code> så att det ser ut så här:</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"engines"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"node"</span><span class="token operator">:</span> <span class="token string">">=20"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"dev"</span><span class="token operator">:</span> <span class="token string">"nodemon -e js,html,njk,json,css ./server.js"</span><span class="token punctuation">,</span>
+    <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"node server.js"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Utöver detta så är det i <code>package.json</code> du anger vilken typ av javascript standard du använder i ditt projekt. Om du använder ESM (ECMAScript Modules) så behöver du lägga till <code>&quot;type&quot;: &quot;module&quot;</code> i <code>package.json</code>. Detta gör att du kan använda <code>import</code> och <code>export</code> istället för <code>require</code> och <code>module.exports</code>.</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"module"</span><span class="token punctuation">,</span>
+  <span class="token property">"engines"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"node"</span><span class="token operator">:</span> <span class="token string">">=20"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"dev"</span><span class="token operator">:</span> <span class="token string">"nodemon -e js,html,njk,json,css ./server.js"</span><span class="token punctuation">,</span>
+    <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"node server.js"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2>Sammanfattning</h2>
+<p>Nu har du en grundläggande Node.js-applikation som kan köras med Nodemon. Du har också lärt dig hur du hanterar beroenden och skript i <code>package.json</code>, samt hur du använder Git för versionshantering.
+Du kan nu starta din server med kommandot:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> run dev</code></pre>
+<p>Du bör se meddelandet &quot;Hello node!&quot; i terminalen, vilket bekräftar att din Node.js-server körs korrekt.</p>
+
+    </article>
+</main>
+
+    <footer class="wrapper region">
+        &copy; Jens Andreasson 2025
+    </footer>
+    <script src="/kursmaterial/js/elasticlunr.min.js"></script>
+    <script src="/kursmaterial/js/search.js"></script>
+</body>
+
+</html>

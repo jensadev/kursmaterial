@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query parametrar</title>
+    <link rel="stylesheet" href="/kursmaterial/css/reset.css">
+    <link rel="stylesheet" href="/kursmaterial/css/style.css">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism-tomorrow.min.css" integrity="sha512-kSwGoyIkfz4+hMo5jkJngSByil9jxJPKbweYec/UgS+S1EgE45qm4Gea7Ks2oxQ7qiYyyZRn66A9df2lMtjIsw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    
+<nav class="wrapper region">
+    <div class="search-modal" id="search-modal">
+    <form class="search">
+        <label class="sr-only" for="search-input">Sök</label>
+        <input class="search-control" autocomplete="off" type="search" placeholder="Sök..." id="search-input"
+            aria-label="Sök" />
+    </form>
+    <ol id="search-results" class="search-modal-results flow hidden popout" aria-labelledby="search-input">
+    </ol>
+</div>
+    <ul><li><a href="/">kursmaterial</a><ul><li><a href="/programmering-1/">programmering 1</a><ul><li><a href="/programmering-1/introduktion/">introduktion</a></li></ul></li>
+<li><a href="/webbserver/">webbserver</a><ul><li><a href="/webbserver/installation/">installation</a></li>
+<li><a href="/webbserver/node/">node</a></li>
+<li><a href="/webbserver/express/">express</a></li>
+<li><a href="/webbserver/nunjucks/">nunjucks</a></li>
+<li><a href="/webbserver/layout-och-includes/">layout och includes</a></li>
+<li><a href="/webbserver/query-parametrar/">query parametrar</a></li></ul></li>
+<li><a href="/webbutveckling-1/">webbutveckling 1</a><ul><li><a href="/webbutveckling-1/introduktion/">introduktion</a></li></ul></li></ul></li></ul>
+</nav>
+
+    
+<main class="wrapper">
+    <article class="flow">
+        <h2>Query parametrar</h2>
+<p>För att skicka data till servern så kan vi använda query parametrar. Query parametrar skickas i URL:en och kan användas för att skicka data till servern.</p>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/search"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> query <span class="token operator">=</span> request<span class="token punctuation">.</span>query<span class="token punctuation">.</span>q
+  response<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">You searched for: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>query<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>För att skicka en query parameter så skriver du <code>?</code> efter URL:en och sedan namnet på query parametern och värdet.</p>
+<pre><code>http://localhost:3000/search?q=hello
+</code></pre>
+<p>Vi kan sedan skapa en sök ruta i vår nunjucks fil.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/search<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>GET<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>q<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Search<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></code></pre>
+<p>Kom ihåg att query parametrar är synliga i URL:en och ska inte användas för att skicka känslig data. Det är även viktigt att validera data som skickas från användaren.</p>
+<p><strong>Lita aldrig på data som skickas från användaren!</strong></p>
+<h2>Logging</h2>
+<p>För att logga fel så kan vi använda ett paket som heter <code>morgan</code>. Morgan är ett middleware som används för att logga request och response.</p>
+<p>Installera morgan genom att köra:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> morgan</code></pre>
+<p>För att använda morgan så lägger vi till följande kod i vår server fil.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> morgan <span class="token keyword">from</span> <span class="token string">"morgan"</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">morgan</span><span class="token punctuation">(</span><span class="token string">"dev"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>Nu loggas alla request och response i konsolen.</p>
+<h2>Datastrukturer, objekt och json</h2>
+<p>För att simulera en databas så kommer vi att använda oss av en array med objekt. Vi kommer att skapa en array med objekt som innehåller information om filmer.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> movies <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"The Matrix"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token number">1999</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Inception"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token number">2010</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span></code></pre>
+<p>För att skicka data från servern så kan vi använda <code>response.json()</code> metoden. En route för att hämta samtliga filmer kan se ut så här.</p>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/movies"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>movies<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>För att hämta en specifik film så kan vi använda <code>request.params</code> för att hämta id:t på filmen.</p>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/movies/:id"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> id <span class="token operator">=</span> request<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id
+  <span class="token keyword">const</span> movie <span class="token operator">=</span> movies<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token parameter">movie</span> <span class="token operator">=></span> movie<span class="token punctuation">.</span>id <span class="token operator">===</span> <span class="token function">Number</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>movie<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h2>Middleware</h2>
+<p>Middleware är funktioner som körs innan eller efter en route. Middleware används för att utföra uppgifter som att logga request och response, validera data, autentisera användare och mycket mer.</p>
+<p>För att skapa en middleware så skapar vi en funktion som tar tre parametrar, <code>request</code>, <code>response</code> och <code>next</code>. <code>next</code> är en funktion som används för att fortsätta till nästa middleware eller route.</p>
+<p>För att skapa en 404 middleware så kan vi skapa en funktion som ser ut så här.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">notFound</span><span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  response<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span>
+  response<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"404 Not Found"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>För att använda en middleware så lägger vi till den i vår express app med <code>app.use()</code> metoden.</p>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>notFound<span class="token punctuation">)</span></code></pre>
+<p>Nu kommer <code>notFound</code> middleware att köras om ingen route matchar.</p>
+<h2>Routes</h2>
+<p>Routes används för att skapa olika endpoints i din express app. En route består av en HTTP metod och en URL. En endpoint är en URL som används för att skicka eller hämta data från servern.</p>
+<p>För att skapa en route så använder vi <code>app.get()</code> eller mer specifikt så använder vi express router för att skapa en route.</p>
+<p>För att separera routes från vår server fil så kan vi skapa nya filer för våra routes i en mapp som heter <code>routes</code>.</p>
+<p>För att samla våra index routes så kan vi skapa en fil som heter <code>index.js</code> i <code>routes</code> mappen.</p>
+<p>Skapa en mapp som heter <code>routes</code> med <code>mkdir</code>. Skapa en fil som heter <code>index.js</code> i <code>routes</code> mappen och lägg till följande kod.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">"express"</span>
+<span class="token keyword">const</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+router<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  response<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"Hello from index route"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> router</code></pre>
+<p>När vi har routes i separata filer så måste vi i routes filen importera express och skapa en router med <code>express.Router()</code>.
+Vi exporterar sedan router objektet med <code>export default router</code>.</p>
+<p>För att använda routes i vår server fil så importerar vi routes filen och använder <code>app.use()</code> metoden för att använda routern.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">import</span> indexRouter <span class="token keyword">from</span> <span class="token string">"./routes/index.js"</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> indexRouter<span class="token punctuation">)</span></code></pre>
+<h2>Search route</h2>
+<p>Vi skapade en sökruta som skickar data till servern med en query parameter. Vi skapade en route som tar emot query parametern och skickar tillbaka en respons.</p>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/search"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> query <span class="token operator">=</span> request<span class="token punctuation">.</span>query<span class="token punctuation">.</span>q
+  response<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">You searched for: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>query<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Vi skapade även en sökruta i vår nunjucks fil.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/search<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>GET<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>q<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Search<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></code></pre>
+<p>Vi kan utöka det med att faktiskt söka.
+Vi skapade en sökning i en array med filter metoden.
+Här är ett exempel där vi söker efter filmer som innehåller söksträngen.
+Filmerna är en array med objekt som innehåller titel och år. Den ser ut som följande:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> movies <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"The Matrix"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token number">1999</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Inception"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token number">2010</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span></code></pre>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/search"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> query <span class="token operator">=</span> request<span class="token punctuation">.</span>query<span class="token punctuation">.</span>q
+  <span class="token keyword">const</span> results <span class="token operator">=</span> movies<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">movie</span> <span class="token operator">=></span> movie<span class="token punctuation">.</span>title<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>query<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  response<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">"search.njk"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> results <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>Testa!</p>
+<h2>POST route</h2>
+<p>För att skicka data till servern så kan vi använda en POST route. En POST route används för att skicka data till servern. Vi kan skapa en POST route med <code>app.post()</code> metoden.</p>
+<p>För att skapa en POST route så skapar vi en form i vår nunjucks fil som skickar data till servern med en POST request.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/movies<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>POST<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>number<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>year<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Add Movie<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>Vi skapar en POST route som tar emot data från formuläret och lägger till filmen i vår array med filmer.</p>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/movies"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> title <span class="token operator">=</span> request<span class="token punctuation">.</span>body<span class="token punctuation">.</span>title
+  <span class="token keyword">const</span> year <span class="token operator">=</span> request<span class="token punctuation">.</span>body<span class="token punctuation">.</span>year
+  <span class="token keyword">const</span> id <span class="token operator">=</span> movies<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span>
+  <span class="token keyword">const</span> movie <span class="token operator">=</span> <span class="token punctuation">{</span> id<span class="token punctuation">,</span> title<span class="token punctuation">,</span> year <span class="token punctuation">}</span>
+  movies<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>movie<span class="token punctuation">)</span>
+  response<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">"/movies"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>För att använda <code>request.body</code> så behöver vi använda ett middleware som heter <code>express.json()</code>. <code>express.json()</code> används för att tolka JSON data som skickas från klienten.</p>
+<p>För att använda <code>express.json()</code> så lägger vi till det i vår express app, redigera <code>server.js</code> och lägg till följande kod.</p>
+<pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+
+    </article>
+</main>
+
+    <footer class="wrapper region">
+        &copy; Jens Andreasson 2025
+    </footer>
+    <script src="/kursmaterial/js/elasticlunr.min.js"></script>
+    <script src="/kursmaterial/js/search.js"></script>
+</body>
+
+</html>
