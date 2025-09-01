@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{ '/css/reset.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
     {% block head %}{% endblock %}
 </head>
 
@@ -18,8 +18,8 @@
     <footer class="wrapper region">
         &copy; Jens Andreasson 2025
     </footer>
-    <script src="{{ "/js/elasticlunr.min.js" | url }}"></script>
-    <script src="/js/search.js"></script>
+    <script src="{{ '/js/elasticlunr.min.js' | url }}"></script>
+    <script src="{{ '/js/search.js' | url }}"></script>
 </body>
 
 </html>
