@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
+<<<<<<< HEAD
 
       - run: npm ci
       - run: npm run build
@@ -27,3 +28,12 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
+=======
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build --if-present
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5.0.0
+          
+>>>>>>> 9dcd4e39fda0211bc1904b3ce68b68e62539a8bf
