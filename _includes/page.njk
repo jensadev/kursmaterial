@@ -12,17 +12,17 @@
     <!-- {{ collections.all | eleventyNavigation | eleventyNavigationToHtml({ maxDepth: 1 }) | safe }} -->
     {% set navPages = collections.all | eleventyNavigation %}
     {% macro renderNavListItem(entry) -%}
-    <li{% if entry.url == page.url %} class="my-active-class" {% endif %}>
+    <li{% if entry.url==page.url %} class="my-active-class" {% endif %}>
         <a href="{{ entry.url | url }}">{{ entry.title }}</a>
         {%- if entry.children.length -%}
-        <ul>
+        <ul class="nav-sub-list">
             {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
         </ul>
         {%- endif -%}
         </li>
         {%- endmacro %}
 
-        <ul>
+        <ul class="nav-list">
             {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
         </ul>
 </nav>
