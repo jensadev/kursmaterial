@@ -81,10 +81,6 @@ nav {
     --region-space-bottom: var(--space-m-l);
 }
 
-nav>ul {
-    padding-inline-start: var(--gutter);
-}
-
 .search-modal {
     position: relative;
 }
@@ -137,4 +133,49 @@ form {
     position: absolute;
     white-space: nowrap;
     width: 1px;
+}
+
+nav ul {
+    list-style: none;
+    padding-left: 0;
+    a {
+        text-decoration: none;
+    }
+}
+
+.nav-list>li:first-child {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s)
+}
+
+.nav-sub-list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+}
+
+.nav-sub-list > li {
+    position: relative;
+}
+
+.nav-sub-list > li > ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    min-width: 12rem;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    list-style: none;
+    padding: var(--space-xs);
+    z-index: 100;
+}
+
+.nav-sub-list > li:hover > ul,
+.nav-sub-list > li:focus-within > ul {
+    display: block;
+    :hover{
+        text-decoration: underline;
+    }
 }
