@@ -1,14 +1,7 @@
 const siteSearch = () => {
-    // const toggleSearch = () => {
-    //     const searchModal = document.querySelector("#search-modal")
-    //     searchModal.classList.toggle("hidden")
-    //     const searchInput = document.querySelector("#search-input")
-    //     searchInput.focus()
-    // }
-
-    // document
-    //     .querySelector("#toggleSearch")
-    //     .addEventListener("click", toggleSearch)
+    // fulhack
+    const isDev = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+    const searchPath = isDev ? "" : "/kursmaterial/";
 
     window.addEventListener("keydown", (e) => {
         if (e.key === "k" && e.ctrlKey) {
@@ -39,7 +32,7 @@ const siteSearch = () => {
                 resultElement.appendChild(li)
 
                 const a = document.createElement("a")
-                a.setAttribute("href", id)
+                a.setAttribute("href", searchPath + id)
                 a.textContent = title
                 li.appendChild(a)
 
@@ -57,11 +50,9 @@ const siteSearch = () => {
                 '<li class="search-modal-results-item--disabled">Hittade inga sökresultat, försök igen</li>'
         }
     }
-    // fulhack
-    const isDev = location.hostname === "localhost" || location.hostname === "127.0.0.1";
-    const searchIndexPath = isDev ? "/search-index.json" : "/kursmaterial/search-index.json";
 
-    fetch(searchIndexPath).then((response) =>
+
+    fetch(searchPath + "search-index.json").then((response) =>
         response.json().then((rawIndex) => {
             // eslint-disable-next-line no-undef
             window.searchIndex = elasticlunr.Index.load(rawIndex)
