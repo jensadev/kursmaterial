@@ -57,8 +57,11 @@ const siteSearch = () => {
                 '<li class="search-modal-results-item--disabled">Hittade inga sökresultat, försök igen</li>'
         }
     }
+    // fulhack
+    const isDev = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+    const searchIndexPath = isDev ? "/search-index.json" : "/kursmaterial/search-index.json";
 
-    fetch(`${window.pathPrefix || ""}/search-index.json`).then((response) =>
+    fetch(searchIndexPath).then((response) =>
         response.json().then((rawIndex) => {
             // eslint-disable-next-line no-undef
             window.searchIndex = elasticlunr.Index.load(rawIndex)
