@@ -46,6 +46,10 @@ export default async function (eleventyConfig) {
 
     eleventyConfig.addPlugin(syntaxHighlight)
 
+    eleventyConfig.addShortcode("filename", (name) => {
+        return `<span class="filename">${name}</span>`;
+    })
+
     return {
         markdownTemplateEngine: "njk",
         passthroughFileCopy: true,

@@ -180,3 +180,27 @@ nav ul {
         text-decoration: underline;
     }
 }
+
+p:has(.filename) {
+    position: relative;
+    margin-bottom: var(--space-xs);
+}
+
+.filename {
+    position: absolute;
+    top: -.8em; /* adjust as needed */
+    left: .5em;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    border: 1px solid var(--color-fg);
+    padding-inline: 0.4em;
+    font-size: var(--step--1);
+    z-index: 2;
+    pointer-events: none;
+
+    font-family: Consolas,Monaco,'Andale Mono',monospace;
+}
+
+p:has(.filename) + pre {
+    margin-top: 0;
+}

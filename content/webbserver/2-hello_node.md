@@ -29,6 +29,7 @@ npm init -y
 Resultatet blir en `package.json` fil som innehåller information om ditt projekt, inklusive dess beroenden och skript.
 Nu kan du skapa en fil som heter `server.js` och lägga in följande kod:
 
+{% filename "server.js" %}
 ```js
 console.log("Hello node!")
 ```
