@@ -51,7 +51,7 @@
     --color-fg: var(--color-dark);
     --color-bg: var(--color-light);
 
-    --font-display: 'Grandview', serif;
+    --font-display: 'Grandview', sans-serif;
     --font-body: serif;
 }
 
