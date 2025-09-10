@@ -285,6 +285,7 @@ table {
     padding: var(--gutter);
     position: relative;
     font-family: var(--font-display);
+    background-color: #fff;
 
     h2 {
         @media screen and (min-width: 500px) {
