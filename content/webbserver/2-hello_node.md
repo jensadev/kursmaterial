@@ -70,6 +70,7 @@ npm install nodemon --save-dev
 
 För att starta servern med Nodemon behöver du skapa ett script i `package.json`. Lägg till `"dev": "nodemon server.js"` i `scripts` i `package.json` så att det ser ut så här (vi ser även till att nodemon lyssnar efter ändringar i njk filer):
 
+{% filename "package.json" %}
 ```json
 {
   "scripts": {
@@ -83,6 +84,7 @@ För att starta servern med Nodemon behöver du skapa ett script i `package.json
 I `package.json` samlar vi script för din server tillsammans med dependencies som du använder i ditt projekt.
 Det kan också vara bra att ange ett start script som kan användas för att starta servern i produktion. Lägg till `"start": "node server.js"` i `scripts` så att det ser ut så här:
 
+{% filename "package.json" %}
 ```json
 {
   "scripts": {
@@ -94,6 +96,7 @@ Det kan också vara bra att ange ett start script som kan användas för att sta
 
 Du kan också ange versionen av Node.js som du använder i ditt projekt. Detta är ibland viktigt för att säkerställa att alla som arbetar med projektet använder samma version av Node.js. Om du får konstiga fel och har svårt att felsöka ditt projekt kan det vara värt att undersöka detta. Du kan kontrollera din Node version med `node -v`. Lägg till `"engines": { "node": ">=20" }` i `package.json` så att det ser ut så här:
 
+{% filename "package.json" %}
 ```json
 {
   "engines": {
@@ -108,6 +111,7 @@ Du kan också ange versionen av Node.js som du använder i ditt projekt. Detta �
 
 Utöver detta så är det i `package.json` du anger vilken typ av javascript standard du använder i ditt projekt. Om du använder ESM (ECMAScript Modules) så behöver du lägga till `"type": "module"` i `package.json`. Detta gör att du kan använda `import` och `export` istället för `require` och `module.exports`.
 
+{% filename "package.json" %}
 ```json
 {
   "type": "module",

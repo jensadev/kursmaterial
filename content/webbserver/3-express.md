@@ -29,6 +29,8 @@ Nu har vi installerat Express och kan börja använda det i vårt projekt.
 ## Skapa en Express server
 
 En Express server är en webbserver som kan hantera HTTP-förfrågningar och skicka svar tillbaka till klienten. För att skapa en Express server så behöver vi först importera Express och sedan skapa en instans av det.
+
+{% filename "server.js" %}
 ```js
 import express from "express" // ESM
 const app = express()
@@ -37,6 +39,7 @@ Nu har vi skapat en Express app som vi kan använda för att hantera HTTP-förfr
 
 För att starta servern så använder vi `app.listen()` metoden. Den tar emot en port som argument och startar servern på den porten.
 
+{% filename "server.js" %}
 ```js
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
@@ -48,11 +51,13 @@ Nu har vi en enkel Express server som lyssnar på port 3000. Du kan ändra porte
 ## Skicka svar från servern
 För att skicka svar från servern så använder vi `app.get()` metoden. Den tar emot en URL och en callback-funktion som körs när en GET-förfrågan görs till den URL:en.
 
+{% filename "server.js" %}
 ```js
 app.get("/", (request, response) => {
   response.send("Hello World!")
 })
 ```
+
 Nu har vi skapat en route som svarar med "Hello World!" när vi gör en GET-förfrågan till root-URL:en ("/").
 
 Starta servern genom att köra `npm run dev` i terminalen. Detta kommer att starta servern med Nodemon, vilket innebär att den automatiskt startar om när du gör ändringar i koden.
@@ -72,6 +77,7 @@ Den kod du just skrev kan du använda som grund för alla dina express projekt. 
 För att skicka statiska filer så används en mapp som heter public. Med statiska filer menas filer som inte ändras, som bilder, css och javascript filer. Dessa filer kan vi använda för att bygga en webbplats.
 För att använda en public mapp så behöver vi konfigurera Express att använda den mappen för statiska filer. Vi kan göra det med `express.static()` middleware.
 
+{% filename "server.js" %}
 ```js
 app.use(express.static("public"))
 ```
@@ -82,6 +88,7 @@ För att sedan använda denna konfiguaration så skapar vi en mapp som heter `pu
 
 Nu kan vi skapa en HTML-fil i public mappen. Skapa en fil som heter `index.html` i public mappen. Kör igång en grundläggande HTML struktur med `html:5` i VSCode och lägg sedan till följande kod i `index.html`:
 
+{% filename "public/index.html" %}
 ```html
 <h1>Hello World!</h1>
 <p>Welcome to my Express server!</p>
@@ -98,6 +105,7 @@ Middleware är funktioner som körs innan eller efter en route. Middleware anvä
 
 Nu kan vi lägga till en CSS-fil som vi sedan kan använda i vår HTML-fil. Skapa en fil som heter `style.css` i public mappen. Lägg till följande kod i `style.css`:
 
+{% filename "public/style.css" %}
 ```css
 body {
   font-size: 1.2rem;
@@ -107,9 +115,12 @@ body {
 
 För att använda css filen i din html fil så lägger du till en länk i head taggen.
 
+{% filename "public/index.html" %}
 ```html
 <link rel="stylesheet" href="/style.css">
 ```
+
+Viktigt att notera och tänka på här är att vi inte behöver ange `/public` i href attributet eftersom Express automatiskt letar efter filer i public mappen när vi använder `express.static()` middleware.
 
 ## Sammanfattning
 

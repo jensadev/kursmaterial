@@ -27,6 +27,7 @@ Med ett templating språk kan vi skapa dynamiska HTML sidor. Det innebär att vi
 
 För att använda nunjucks i express så behöver vi konfigurera express att använda nunjucks som view engine. Öppna din `server.js` fil och lägg till följande kod:
 
+{% filename "server.js" %}
 ```js
 nunjucks.configure("views", {
   autoescape: true,
@@ -43,6 +44,7 @@ XSS står för Cross-Site Scripting och är en typ av attack där en angripare k
 ## Skapa en vy
 
 Nu ska vi skapa en mapp som heter `views`. I mappen kommer vi att skapa alla våra nunjucks filer, eller vyer. Skapa en mapp som heter `views` i din projektmapp.
+
 ```bash
 mkdir views
 ```
@@ -55,6 +57,7 @@ För att få syntax highlighting och autocompletion i VSCode när du använder N
 
 Du kan nu skriva `html:5` och få en grundläggande HTML-struktur i din `index.njk` fil. Lägg sedan till följande kod i `index.njk`:
 
+{% filename "views/index.njk" %}
 ```html
 <h1>Hello node med express och nunjucks!</h1>
 <p>Welcome to my Express server with Nunjucks!</p>
@@ -66,6 +69,7 @@ Med Nunjucks kan vi rendera en vy och skicka data till den. För att göra detta
 
 För att rendera en vy så ändrar vi i vår `server.js` fil och lägger till en route som renderar vår `index.njk` fil. Vi kan göra det så här:
 
+{% filename "server.js" %}
 ```js
 app.get("/", (request, response) => {
   response.render("index.njk")
@@ -87,6 +91,7 @@ I bash kan du använda `rm public/index.html` för att ta bort den statiska HTML
 Nu när vi använder Nunjucks och `render()` metoden så kan vi skicka data till vyn. Vi kan skicka data som ett objekt som sedan kan användas i Nunjucks-filen.
 För att skicka data till vyn så kan vi ändra vår route så här:
 
+{% filename "server.js" %}
 ```js
 app.get("/", (request, response) => {
   const data = {
@@ -96,10 +101,13 @@ app.get("/", (request, response) => {
   response.render("index.njk", data)
 })
 ```
+
 Nu kan vi använda `title` och `message` i vår Nunjucks-fil. Ändra din `index.njk` fil så här:
 
+{% filename "index.njk" %}
 ```html
 <h1>{{ title }}</h1>
 <p>{{ message }}</p>
 ```
+
 Nu kommer Nunjucks att rendera `title` och `message` från vårt dataobjekt i HTML-sidan. Du kan även lägga till fler variabler i dataobjektet och använda dem i din Nunjucks-fil.
