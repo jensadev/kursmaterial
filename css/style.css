@@ -36,7 +36,6 @@
     --step-4: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
     --step-5: clamp(2.7994rem, 2.4462rem + 1.7658vw, 3.8147rem);
 
-
     --gutter: 1em;
     --color-dark: #333;
     --color-light: #f0f0f0;
@@ -53,14 +52,23 @@
 }
 
 body {
-    font-family: sans-serif;
+    font-family: serif;
     background-color: var(--color-bg);
     color: var(--color-fg);
-    font-size: 1.2rem;
+    font-size: var(--step-1);
+}
+
+h1, h2, h3, h4 {
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.5;
 }
 
 .wrapper {
-    max-width: var(--wrapper-max-width, 85rem);
+    max-width: var(--wrapper-max-width, 75ch);
     margin-left: auto;
     margin-right: auto;
     padding-left: var(--gutter);
@@ -90,7 +98,7 @@ nav {
     color: fieldtext;
     background-color: field;
     width: 100%;
-    border: 1px solid var(--color-fg);
+    border: 2px solid var(--color-fg);
     padding: var(--space-xs);
     border-radius: var(--border-radius);
     z-index: 1000;
@@ -110,13 +118,12 @@ nav {
 }
 
 form {
-
     input,
     textarea {
         width: 100%;
         padding: var(--space-2xs);
         margin-top: var(--space-3xs-2xs);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius, 0);
     }
 
     *:focus {
@@ -130,15 +137,20 @@ form {
     padding: 0;
     margin: -1;
     height: 1px;
+    width: 1px;
     overflow: hidden;
     position: absolute;
     white-space: nowrap;
-    width: 1px;
+}
+
+nav {
+    font-family: sans-serif;
 }
 
 nav ul {
     list-style: none;
     padding-left: 0;
+
     a {
         text-decoration: none;
     }
@@ -147,36 +159,39 @@ nav ul {
 .nav-list>li:first-child {
     display: flex;
     align-items: center;
-    gap: var(--space-s)
+    gap: var(--space-m)
 }
 
 .nav-sub-list {
     position: relative;
     display: flex;
     align-items: center;
-    gap: var(--space-s);
+    gap: var(--space-m);
 }
 
-.nav-sub-list > li {
+.nav-sub-list>li {
     position: relative;
 }
 
-.nav-sub-list > li > ul {
+.nav-sub-list>li>ul {
     display: none;
     position: absolute;
     left: 0;
     min-width: 12rem;
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     list-style: none;
     padding: var(--space-xs);
     z-index: 100;
 }
 
-.nav-sub-list > li:hover > ul,
-.nav-sub-list > li:focus-within > ul {
+.nav-sub-list>li:hover>ul,
+.nav-sub-list>li:focus-within>ul {
     display: block;
-    :hover{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    :hover {
         text-decoration: underline;
     }
 }
@@ -188,19 +203,26 @@ p:has(.filename) {
 
 .filename {
     position: absolute;
-    top: -.8em; /* adjust as needed */
+    top: -.8em;
+    /* adjust as needed */
     left: .5em;
     background: var(--color-bg);
     color: var(--color-fg);
-    border: 1px solid var(--color-fg);
-    padding-inline: 0.4em;
+    border: 2px solid var(--color-fg);
+    padding-inline: var(--space-3xs);
     font-size: var(--step--1);
     z-index: 2;
     pointer-events: none;
 
-    font-family: Consolas,Monaco,'Andale Mono',monospace;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
 }
 
-p:has(.filename) + pre {
+p:has(.filename)+pre {
     margin-top: 0;
+}
+
+code {
+    color: var(--color-bg);
+    background-color: var(--color-fg);
+    padding: var(--space-3xs) var(--space-2xs);
 }

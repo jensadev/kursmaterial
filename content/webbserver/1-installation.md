@@ -47,17 +47,20 @@ NVM står för Node Version Manager och är ett verktyg för att installera och 
 
 ## Linux commandon
 
-Du har förhoppningsvis med dig lite cmdline kunskaper från tidigare. Det är bra om du förstår hur filsystemet är uppbyggt både på windows och linux. I filsystemet har du en root, som är den översta nivån, och under den finns olika mappar och filer. I Linux är filsystemet uppbyggt som en trädstruktur där allt börjar från root (/).
-Det finns ingen C:\ eller D:\ som i Windows, utan allt är en del av samma filsystem. 
+Du har förhoppningsvis med dig lite cmdline kunskaper från tidigare. Det är bra om du förstår hur filsystemet är uppbyggt både på windows och linux. I filsystemet har du en root, som är den översta nivån, och under den finns olika mappar och filer. I Linux är filsystemet uppbyggt som en trädstruktur där allt börjar från root `/`.
+Det finns ingen `C:\` eller `D:\` som i Windows, utan allt är en del av samma filsystem. 
 
 För att navigera i filsystemet använder vi kommandon i terminalen. Här är några grundläggande kommandon som är bra att känna till:
 
-* pwd - visar aktiv mapp
-* ls - listar alla filer i mappen
-* ll - visar även dolda filer, är ett alias för ls -la
-* cd <mappnamn> ändrar mapp
-    * cd .. - går upp en nivå i filsystemet
-    * cd eller cd ~ - går till hemkatalogen
-* mkdir <mappnamn> - skapar en ny mapp
-* rm <filnamn> - tar bort en fil
-* rm -r <mappnamn> - tar bort en mapp och dess innehåll
+| Kommando | Beskrivning |
+|---|---------------|
+| `pwd`      | Visar aktiv mapp        |
+| `ls`| Listar alla filer i mappen |
+| `ll`| Visar alla filerna i mappen, ett alias |
+| `ls -la`| Visar alla filerna i mappen, även dolda filer |
+| `cd <mappnamn>` | Byter till den angivna mappen |
+| `cd ..` | Går upp en nivå i filsystemet, alltså mappen ovanför den du är i |
+| `cd` `cd ~` | Går till din users hem mapp |
+| `mkdir <mappnamn>` | Skapar en ny mapp |
+| `rm <filnamn>` | Tar bort en fil          |
+| `rm -r <mappnamn>`  | Tar bort en mapp och dess innehåll   |
