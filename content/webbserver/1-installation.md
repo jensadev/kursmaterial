@@ -4,8 +4,10 @@ summary: För att komma igång och skriva en webbserver behöver vi installera n
 tags: [installation, wsl, nvm, linux]
 eleventyNavigation:
     key: installation
+    order: 1
     parent: webbserver
 ---
+
 
 # Installation
 

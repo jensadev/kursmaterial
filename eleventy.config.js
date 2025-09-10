@@ -1,6 +1,10 @@
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation"
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight"
 import elasticlunr from "elasticlunr"
+import eleventyPluginTOC from "@thedigitalman/eleventy-plugin-toc-a11y"
+import emojiReadTime from "@11tyrocks/eleventy-plugin-emoji-readtime"
+import markdownIt from "markdown-it"
+import markdownItAnchor from "markdown-it-anchor"
 
 const searchFilter = async (collection) => {
     // what fields we'd like our index to consist of
@@ -44,11 +48,26 @@ export default async function (eleventyConfig) {
         return [...collection.getFilteredByGlob("./content/**/*.md")];
     })
 
+    eleventyConfig.addPlugin(emojiReadTime, {
+        emoji: "📕",
+        showEmoji: false,
+        label: "minuters läsning",
+        wpm: 175,
+        bucketSize: 3,
+    })
+
     eleventyConfig.addPlugin(syntaxHighlight)
+    eleventyConfig.addPlugin(eleventyPluginTOC, {
+        headingText: "Innehållsförteckning",
+    })
 
     eleventyConfig.addShortcode("filename", (name) => {
         return `<span class="filename">${name}</span>`;
     })
+
+    eleventyConfig.setLibrary('md',
+        markdownIt().use(markdownItAnchor)
+    )
 
     return {
         markdownTemplateEngine: "njk",
