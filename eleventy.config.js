@@ -12,7 +12,8 @@ const searchFilter = async (collection) => {
         this.addField("title")
         this.addField("summary")
         this.addField("tags")
-        this.addField("category")
+        // this.addField("category")
+        this.addField("toc")
         this.setRef("id")
     })
 
@@ -25,12 +26,21 @@ const searchFilter = async (collection) => {
         // if the page is not a markdown file, skip it
         if (!page.inputPath.endsWith(".md")) continue
 
+        // Extract markdown headings (#, ##, ###) from rawInput
+        const headings = [];
+        const headingRegex = /^(#{1,3})\s+(.*)$/gm;
+        let match;
+        while ((match = headingRegex.exec(page.rawInput)) !== null) {
+            headings.push(match[2].trim());
+        }
+
         index.addDoc({
             id: page.url,
             title: data.title,
             summary: data.summary || "",
             tags: data.tags ? data.tags.toString() : "",
-            category: data.category || "",
+            // category: data.category || "",
+            toc: headings.join(", ")
         })
     }
 
@@ -39,8 +49,7 @@ const searchFilter = async (collection) => {
 
 export default async function (eleventyConfig) {
     eleventyConfig.addPlugin(eleventyNavigationPlugin)
-    eleventyConfig.addPassthroughCopy("./css")
-    eleventyConfig.addPassthroughCopy("./js")
+    eleventyConfig.addPassthroughCopy("./assets")
 
     eleventyConfig.addFilter("searchIndex", searchFilter)
 
@@ -48,25 +57,23 @@ export default async function (eleventyConfig) {
         return [...collection.getFilteredByGlob("./content/**/*.md")];
     })
 
-    eleventyConfig.addPlugin(emojiReadTime, {
-        emoji: "📕",
-        showEmoji: false,
-        label: "minuters läsning",
-        wpm: 175,
-        bucketSize: 3,
-    })
-
     eleventyConfig.addPlugin(syntaxHighlight)
     eleventyConfig.addPlugin(eleventyPluginTOC, {
-        headingText: "Innehållsförteckning",
+        headingText: "På den här sidan",
     })
+
 
     eleventyConfig.addShortcode("filename", (name) => {
         return `<span class="filename">${name}</span>`;
     })
 
     eleventyConfig.setLibrary('md',
-        markdownIt().use(markdownItAnchor)
+        markdownIt({
+            html: true,
+            breaks: true,
+            linkify: true,
+            typographer: true,
+        }).use(markdownItAnchor)
     )
 
     return {

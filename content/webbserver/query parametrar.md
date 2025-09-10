@@ -3,6 +3,7 @@ title: Query parametrar
 eleventyNavigation:
     key: query parametrar
     parent: webbserver
+    order: 6
 ---
 
 ## Query parametrar

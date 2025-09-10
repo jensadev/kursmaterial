@@ -5,6 +5,7 @@ tags: [node, javascript, npm, nodemon]
 eleventyNavigation:
     key: node
     parent: webbserver
+    order: 2
 ---
 
 # Node
