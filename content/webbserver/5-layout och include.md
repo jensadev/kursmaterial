@@ -13,7 +13,7 @@ En av fördelarna med att arbeta med en templat-motor som Nunjucks är att vi ka
 
 Vi kan skapa en layout-fil som innehåller den gemensamma strukturen för våra sidor. Skapa en fil som heter `layout.njk` i `views` mappen och lägg till HTML-grundstrukturen i den filen. Använd emmet och skriv `html:5` för att snabbt skapa en grundläggande HTML-struktur.
 
-Vi kan sedan använda oss av `{% block %}` och `{% endblock %}` för att definiera områden i layouten som kan fyllas med innehåll från andra filer. Materialet i dessa block kommer att ersättas med innehållet från de filer som använder layouten.
+Vi kan sedan använda oss av `{% raw %}{% block %}{% endraw %}` och `{% raw %}{% endblock %}{% endraw %}` för att definiera områden i layouten som kan fyllas med innehåll från andra filer. Materialet i dessa block kommer att ersättas med innehållet från de filer som använder layouten.
 
 {% filename "views/layout.njk" %}
 ```html
@@ -22,8 +22,7 @@ Vi kan sedan använda oss av `{% block %}` och `{% endblock %}` för att definie
 <link rel="stylesheet" href="/style.css">
 ...
 <body>
-  {% block content %}
-  {% endblock %}
+    {% raw %}{% block content %}{% endblock %}{% endraw %}
 </body>
 ...
 ```
@@ -32,9 +31,10 @@ I exemplet ovan har vi skapat ett block som heter `content`. Detta block kommer 
 
 ## Använda layout
 
-För att använda layouten i en annan fil så använder vi `{% extends "layout.njk" %}` högst upp i filen. Detta talar om för Nunjucks att denna fil ska använda `layout.njk` som layout.
+För att använda layouten i en annan fil så använder vi `{% raw %}{% extends "layout.njk" %}{% endraw %}` högst upp i filen. Detta talar om för Nunjucks att denna fil ska använda `layout.njk` som layout.
 
 {% filename "views/index.njk" %}
+{% raw %}
 ```html
 {% extends "layout.njk" %}
 
@@ -43,6 +43,7 @@ För att använda layouten i en annan fil så använder vi `{% extends "layout.n
 <p>{{ message }}</p>
 {% endblock %}
 ```
+{% endraw %}
 
 I exemplet ovan så använder vi `layout.njk` som layout och fyller `content` blocket med en rubrik och ett stycke. Vi använder även variablerna `title` och `message` för att sätta innehållet i rubriken och stycket.
 
@@ -63,7 +64,7 @@ I exemplet ovan så skickar vi med ett objekt som innehåller två variabler: `t
 
 ## Includes
 
-Includes används för att återanvända kod i flera filer. Vi kan skapa en fil som innehåller kod som vi vill återanvända och sedan inkludera den filen i andra filer med `{% include "filnamn.njk" %}`.
+Includes används för att återanvända kod i flera filer. Vi kan skapa en fil som innehåller kod som vi vill återanvända och sedan inkludera den filen i andra filer med `{% raw %}{% include "filnamn.njk" %}{% endraw %}`.
 
 Vi kan till exempel skapa en fil för navigationsmenyn som vi vill använda på flera sidor. Skapa en fil som heter `nav.njk` i `views` mappen och lägg till följande kod:
 
@@ -78,9 +79,10 @@ Vi kan till exempel skapa en fil för navigationsmenyn som vi vill använda på 
 </nav>
 ```
 
-Vi kan sedan inkludera denna fil i vår layout eller i andra filer med `{% include "nav.njk" %}`.
+Vi kan sedan inkludera denna fil i vår layout eller i andra filer med `{% raw %}{% include "nav.njk" %}{% endraw %}`.
 
 {% filename "views/layout.njk" %}
+{% raw %}
 ```html
 <body>
     {% include "nav.njk" %}
@@ -88,5 +90,6 @@ Vi kan sedan inkludera denna fil i vår layout eller i andra filer med `{% inclu
     {% endblock %}
 </body>
 ```
+{% endraw %}
 
 I exemplet ovan så inkluderar vi `nav.njk` i vår layout. Detta gör att navigationsmenyn kommer att visas på alla sidor som använder denna layout.
