@@ -29,8 +29,8 @@ header {
     background-color: var(--color-green);
 }
 
-main, article {
-    /* Add layout rules as needed */
+article {
+
 }
 
 table {
