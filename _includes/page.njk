@@ -7,28 +7,30 @@
 {% endblock %}
 
 {% block nav %}
-<nav class="wrapper region">
-    {% include "search.njk" %}
-    {% set navPages = collections.all | eleventyNavigation %}
-    {% macro renderNavListItem(entry) -%}
-    <li{% if entry.url==page.url %} class="my-active-class" {% endif %}>
-        <a href="{{ entry.url | url }}">{{ entry.title | capitalize }}</a>
-        {%- if entry.children.length -%}
-        <ul class="nav-sub-list">
-            {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
-        </ul>
-        {%- endif -%}
+<header class="region">
+    <nav class="wrapper">
+        {% include "search.njk" %}
+        {% set navPages = collections.all | eleventyNavigation %}
+        {% macro renderNavListItem(entry) -%}
+        <li{% if entry.url==page.url %} class="my-active-class" {% endif %}>
+            <a href="{{ entry.url | url }}">{{ entry.title | capitalize }}</a>
+            {%- if entry.children.length -%}
+            <ul class="nav-sub-list">
+                {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
+            </ul>
+            {%- endif -%}
         </li>
         {%- endmacro %}
-
+        
         <ul class="nav-list">
             {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
         </ul>
-</nav>
+    </nav>
+</header>
 {% endblock %}
 
 {% block content %}
-<main class="wrapper" id="main-content" tabindex="-1">
+<main class="wrapper region" id="main-content" tabindex="-1">
     <article class="flow">
         {{ content | toc | safe }}
         {{ content | safe }}

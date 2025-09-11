@@ -1,0 +1,48 @@
+/* base.css: Reset, variables, fonts, root, body, headings, typography */
+
+@font-face {
+    font-family: 'Grandview';
+    src: url('../fonts/Grandview.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: var(--color-dark);
+        --color-fg: var(--color-light);
+    }
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-size: var(--step-1);
+    text-wrap: pretty;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: .9;
+    letter-spacing: .1em;
+}
+
+p {
+    line-height: 1.5;
+}
+
+article h1,
+article h2,
+article h3,
+article h4 {
+    color: var(--color-bg);
+    background-color: var(--color-fg);
+    display: inline-block;
+    text-transform: uppercase;
+    padding-top: 0.1em;
+    padding-inline: 0.1em;
+}
+
