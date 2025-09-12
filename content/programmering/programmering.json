@@ -1,5 +1,5 @@
 {
     "layout": "page.njk",
     "tags": ["programmering"],
-    "permalink": "/programmering-1/{{ title | slug }}/"
+    "permalink": "/programmering/{{ title | slug }}/"
 }

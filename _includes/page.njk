@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block nav %}
-<header class="region">
+<header class="{% if tags[0] %}{{ tags[0] }} {% endif %}region">
     <nav class="wrapper">
         {% include "search.njk" %}
         {% set navPages = collections.all | eleventyNavigation %}

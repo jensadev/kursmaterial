@@ -1,5 +1,5 @@
 {
     "layout": "page.njk",
     "tags": ["webbutveckling"],
-    "permalink": "/webbutveckling-1/{{ title | slug }}/"
+    "permalink": "/webbutveckling/{{ title | slug }}/"
 }

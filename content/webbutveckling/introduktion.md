@@ -2,5 +2,6 @@
 title: Introduktion
 eleventyNavigation:
     key: introduktion
-    parent: programmering 1
+    parent: webbutveckling
+    order: 1
 ---

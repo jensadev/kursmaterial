@@ -50,3 +50,15 @@ article h4 {
     background: var(--color-purple);
     color: var(--color-fg);
 }
+
+.webbserver {
+    --color-topic: var(--color-green);
+}
+
+.programmering {
+    --color-topic: var(--color-blue);
+}
+
+.webbutveckling {
+    --color-topic: var(--color-purple);
+}
