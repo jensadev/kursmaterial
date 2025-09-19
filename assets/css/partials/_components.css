@@ -1,7 +1,7 @@
 /* components.css: Buttons, forms, search-modal, skip-link, filename, nav-toc, navigation lists */
 
 a {
-    color: inherit;
+    color: var(--color-link, inherit);
     text-decoration: none;
 }
 
@@ -9,10 +9,6 @@ a:hover {
     text-decoration: none;
     background-color: var(--color-fg);
     color: var(--color-bg);
-}
-
-p a {
-    color: var(--color-link, inherit);
 }
 
 .search-modal {
@@ -72,6 +68,9 @@ form *:focus {
 
 nav ul {
     list-style: none;
+    a {
+        color: inherit;
+    }
 }
 
 .nav-list {
@@ -127,6 +126,10 @@ nav ul {
     position: relative;
     font-family: var(--font-display);
     background-color: var(--color-red);
+    
+    a {
+        color: inherit;
+    }
 }
 
 .nav-toc h2 {
