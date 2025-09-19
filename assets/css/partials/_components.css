@@ -11,6 +11,10 @@ a:hover {
     color: var(--color-bg);
 }
 
+p a {
+    color: var(--color-link, inherit);
+}
+
 .search-modal {
     position: relative;
 }
