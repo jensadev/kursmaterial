@@ -38,7 +38,7 @@
 
     --gutter: 1em;
     --color-dark: #231f20;
-    --color-light: #fff;
+    --color-light: #fffcf7;
     --color-red: #ff4d3c;
     --color-green: #44d19d;
     --color-orange: #ff9f50;
@@ -49,6 +49,7 @@
 
     --color-fg: var(--color-dark);
     --color-bg: var(--color-light);
+    --color-link: color-mix(in srgb, var(--color-fg) 70%, var(--color-blue) 30%);
 
     --font-display: 'Grandview', sans-serif;
     --font-body: serif;

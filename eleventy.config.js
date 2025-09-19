@@ -39,7 +39,6 @@ const searchFilter = async (collection) => {
             title: data.title,
             summary: data.summary || "",
             tags: data.tags ? data.tags.toString() : "",
-            // category: data.category || "",
             toc: headings.join(", ")
         })
     }
