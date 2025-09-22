@@ -1,6 +1,7 @@
 ---
 title: Programmering
 permalink: /programmering/index.html
+toc: false
 eleventyNavigation:
     key: programmering
     parent: kursmaterial
@@ -8,3 +9,21 @@ eleventyNavigation:
 ---
 
 # Programmering
+
+Programmering består av två kurser, nivå 1 och nivå 2.
+
+## Nivå 1
+
+<ul>
+{% for item in collections.programmering | filterByTag("nivå 1") %}
+    <li><a href="{{ item.url }}">{{ item.data.title }}</a></li>
+{% endfor %}
+</ul>
+
+## Nivå 2
+
+<ul>
+{% for item in collections.programmering | filterByTag("nivå 2") %}
+    <li><a href="{{ item.url }}">{{ item.data.title }}}</a></li>
+{% endfor %}
+</ul>

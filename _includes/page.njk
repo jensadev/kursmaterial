@@ -32,7 +32,9 @@
 {% block content %}
 <main class="wrapper region" id="main-content" tabindex="-1">
     <article class="flow">
+        {% if toc != false %}
         {{ content | toc | safe }}
+        {% endif %}
         {{ content | safe }}
     </article>
 </main>

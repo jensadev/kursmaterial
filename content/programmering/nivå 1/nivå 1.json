@@ -1,0 +1,5 @@
+{
+    "layout": "page.njk",
+    "tags": ["nivå 1"],
+    "permalink": "/programmering/1/{{ title | slug }}/"
+}

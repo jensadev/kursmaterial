@@ -66,6 +66,27 @@ export default async function (eleventyConfig) {
         return `<span class="filename">${name}</span>`;
     })
 
+    eleventyConfig.addFilter("filterByTag", (collection, tag) => {
+        return collection.filter(page => {
+            const tags = page.data && page.data.tags;
+            if (!tags) return false;
+            if (Array.isArray(tags)) {
+                return tags.includes(tag);
+            }
+            return tags === tag;
+        });
+    });
+
+    eleventyConfig.addFilter("orderByNavigation", (collection) => {
+        return collection.slice().sort((a, b) => {
+            const navA = a.data.eleventyNavigation || {};
+            const navB = b.data.eleventyNavigation || {};
+            const orderA = typeof navA.order === "number" ? navA.order : Number.POSITIVE_INFINITY;
+            const orderB = typeof navB.order === "number" ? navB.order : Number.POSITIVE_INFINITY;
+            return orderA - orderB;
+        });
+    });
+
     eleventyConfig.setLibrary('md',
         markdownIt({
             html: true,

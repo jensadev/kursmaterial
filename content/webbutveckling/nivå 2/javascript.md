@@ -7,4 +7,4 @@ eleventyNavigation:
     order: 10
 ---
 
-# html
+# Javascript
