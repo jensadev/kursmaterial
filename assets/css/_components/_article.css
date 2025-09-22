@@ -1,0 +1,17 @@
+article h1,
+article h2,
+article h3,
+article h4 {
+    color: var(--color-bg);
+    background-color: var(--color-fg);
+    display: inline-block;
+    text-transform: uppercase;
+    padding-top: 0.1em;
+    padding-inline: 0.1em;
+}
+
+article>p>code {
+    color: var(--color-bg);
+    background-color: var(--color-fg);
+    padding-inline: 0.1em;
+}

@@ -1,0 +1,22 @@
+.filename {
+    position: absolute;
+    top: -.8em;
+    left: .5em;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    border: 2px solid var(--color-fg);
+    padding-inline: var(--space-3xs);
+    font-size: var(--step--1);
+    z-index: 2;
+    pointer-events: none;
+    font-family: monospace;
+}
+
+p:has(.filename) {
+    position: relative;
+    margin-bottom: var(--space-xs);
+}
+
+p:has(.filename)+pre {
+    margin-top: 0;
+}

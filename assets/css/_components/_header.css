@@ -1,0 +1,5 @@
+header {
+    --region-space-top: var(--space-s-m);
+    --region-space-bottom: var(--space-m-l);
+    background-color: var(--color-topic, var(--color-yellow));
+}

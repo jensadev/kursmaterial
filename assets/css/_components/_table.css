@@ -1,0 +1,18 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead {
+    text-align: left;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+}
+
+td {
+    border-top: 1px solid var(--color-fg);
+}
+
+tr:hover {
+    background-color: var(--color-orange);
+}

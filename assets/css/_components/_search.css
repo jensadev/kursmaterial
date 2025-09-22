@@ -1,0 +1,27 @@
+.search-modal {
+    position: relative;
+}
+
+.search-modal-results {
+    position: absolute;
+    color: fieldtext;
+    background-color: field;
+    width: 100%;
+    border: 2px solid var(--color-fg);
+    padding: var(--space-xs);
+    border-radius: var(--border-radius, 0);
+    z-index: 1000;
+}
+
+.search-modal-results li {
+    display: block;
+    width: 100%;
+}
+
+.search-modal-results li:hover:not(p) {
+    text-decoration: none;
+}
+
+.search-modal-results li:focus {
+    border-radius: 0;
+}
