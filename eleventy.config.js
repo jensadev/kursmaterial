@@ -5,6 +5,7 @@ import eleventyPluginTOC from "@thedigitalman/eleventy-plugin-toc-a11y"
 import emojiReadTime from "@11tyrocks/eleventy-plugin-emoji-readtime"
 import markdownIt from "markdown-it"
 import markdownItAnchor from "markdown-it-anchor"
+import markdownItAbbr from "markdown-it-abbr"
 
 const searchFilter = async (collection) => {
     // what fields we'd like our index to consist of
@@ -87,13 +88,17 @@ export default async function (eleventyConfig) {
         });
     });
 
+    eleventyConfig.addPairedShortcode("alert", (content, className = "info") => {
+        return `<div class="alert ${className}">${content}</div>`;
+    });
+
     eleventyConfig.setLibrary('md',
         markdownIt({
             html: true,
             breaks: true,
             linkify: true,
             typographer: true,
-        }).use(markdownItAnchor)
+        }).use(markdownItAnchor).use(markdownItAbbr)
     )
 
     return {
