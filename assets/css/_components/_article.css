@@ -15,3 +15,7 @@ article>p>code {
     background-color: var(--color-fg);
     padding-inline: 0.1em;
 }
+
+article>p>a {
+    text-decoration: underline;
+}

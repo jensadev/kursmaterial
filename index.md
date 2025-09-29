@@ -1,6 +1,7 @@
 ---
 title: Kursmaterial
 layout: page.njk
+toc: false
 eleventyNavigation:
     key: kursmaterial
 ---

@@ -13,3 +13,7 @@
 .alert.attention {
     background-color: var(--color-yellow);
 }
+
+.alert.warning {
+    background-color: var(--color-orange);
+}

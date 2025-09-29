@@ -13,6 +13,7 @@ body {
 }
 
 h1, h2, h3, h4 {
+    --flow-space: 1.2em;
     font-family: var(--font-display);
     font-weight: 700;
     line-height: .9;
@@ -35,12 +36,17 @@ a:hover {
     color: var(--color-bg);
 }
 
+abbr {
+    cursor: help;
+    text-decoration-color: color-mix(in srgb, var(--color-fg) 80%, transparent);
+}
+
 ::selection {
     background: var(--color-purple);
     color: var(--color-dark);
 }
 
-.webbserver {
+.webbserverprogrammering {
     --color-topic: var(--color-green);
 }
 

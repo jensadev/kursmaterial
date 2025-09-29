@@ -16,7 +16,3 @@ p:has(.filename) {
     position: relative;
     margin-bottom: var(--space-xs);
 }
-
-p:has(.filename)+pre {
-    margin-top: 0;
-}
