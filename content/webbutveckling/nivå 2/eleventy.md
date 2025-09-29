@@ -197,4 +197,13 @@ Mappen som skapas av Eleventy heter `_site` och är där alla genererade filer h
 2. Hur lägger du till och länkar en CSS-fil i din Eleventy-layout?
 3. Vad är syftet med `eleventy.config.js`-filen och hur använder du den för att kopiera över mappar?
 
+### Övning
+
+Du har ovan skapat en grund för en webbplats med Eleventy. Du har där använt en layout och skapat en CSS-fil för att styla sidan.
+
+Testa nu att skapa en ny sida i ditt projekt, det kan vara en about sida där du kan skriva vem du är och att detta är ett övningsexempel. Använd det du har lärt dig så att about sidan använder samma layout och CSS som din index-sida.
+
+Det är ofta så att vi vill kunna använda bilder eller liknande i våra projekt. Vi kan göra det på samma sätt som vi gjorde med CSS-filerna. Skapa en mapp som heter `images` i roten av ditt projekt och lägg till en bildfil där. Lägg sedan till en passthrough copy i `eleventy.config.js` för att kopiera över bilderna.
+Du kan sedan använda bilden i din HTML eller Markdown med en vanlig `<img>`-tagg.
+
 ## Nästa steg
