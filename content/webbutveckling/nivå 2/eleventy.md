@@ -8,6 +8,8 @@ eleventyNavigation:
 ---
 
 *[webbplatsgenerator]: Ett verktyg som automatiskt skapar en webbplats från olika filer och mallar.
+*[API]: Application Programming Interface, ett sätt för olika program att kommunicera med varandra.
+*[ramverk]: En uppsättning verktyg och bibliotek som förenklar utvecklingen av webbapplikationer.
 
 # Eleventy
 
@@ -206,4 +208,204 @@ Testa nu att skapa en ny sida i ditt projekt, det kan vara en about sida där du
 Det är ofta så att vi vill kunna använda bilder eller liknande i våra projekt. Vi kan göra det på samma sätt som vi gjorde med CSS-filerna. Skapa en mapp som heter `images` i roten av ditt projekt och lägg till en bildfil där. Lägg sedan till en passthrough copy i `eleventy.config.js` för att kopiera över bilderna.
 Du kan sedan använda bilden i din HTML eller Markdown med en vanlig `<img>`-tagg.
 
-## Nästa steg
+## Samlingar
+
+Eleventy har en kraftfull funktion som kallas "samlingar" (eng. collections) som låter dig gruppera och hantera relaterat innehåll på din webbplats. Detta är särskilt användbart för bloggar eller andra typer av webbplatser där du har många sidor med liknande struktur.
+
+Vi kan skapa en samling i Eleventy genom att skapa en mapp i roten av vårt projekt, i det här fallet kallar vi den posts (som en blogg eller liknande). Skapa mappen:
+
+```bash
+mkdir posts
+```
+
+I mappen kan vi sedan skapa flera Markdown-filer som representerar olika inlägg. Varje fil kan ha frontmatter för att definiera metadata som titel och datum.
+
+{% filename "posts/post1.md" %}
+```markdown
+---
+title: "Första inlägget"
+date: 2023-01-01
+---
+
+Detta är innehållet i mitt första inlägg.
+```
+
+Du kan nu testa att surfa till `http://localhost:8080/posts/post1/` för att se ditt inlägg. Vi kan skapa ytterligare ett inlägg för att se hur samlingen fungerar.
+
+{% filename "posts/post2.md" %}
+```markdown
+---
+title: "Andra inlägget"
+date: 2023-01-02
+---
+Detta är innehållet i mitt andra inlägg.
+```
+
+Nu när vi skapat flera inlägg så kan vi konstatera att vi vill att varje inlägg ska använda samma layout. Vi skulle kunna lägga till {%raw %}`layout: layout.njk`{% endraw %} i frontmatter för varje inlägg, men det finns ett bättre sätt att göra detta på.
+
+I mappen posts kan vi skapa en data-fil som heter `posts.json`. Denna fil kan innehålla metadata som gäller för alla filer i mappen. Vi kan där lägga till layout-inställningen.
+
+{% filename "posts/posts.json" %}
+{% raw %}
+```json
+{
+    "layout": "layout.njk"
+}
+```
+{% endraw %}
+
+Nu kommer alla filer i `posts`-mappen att använda `layout.njk` som layout utan att vi behöver specificera det i varje enskild fil. Det kan även vara så att vi vill använda en specifik layout för just posts, då kan vi skapa en ny layout-fil i `_includes`-mappen som heter `post.njk` och använda den istället.
+
+Posts kan i sin tur hänvisa och ärva innehållet från layout.njk genom att använda Nunjucks {% raw %}`{% extends "layout.njk" %}`{% endraw %} och sedan definiera block som kan fyllas med innehåll.
+
+{% filename "_includes/post.njk" %}
+{% raw %}
+```html
+{% extends "layout.njk" %}
+
+{% block content %}
+    <article>
+        <h1>{{ title }}</h1>
+        <p><em>{{ date }}</em></p>
+        {{ content | safe }}
+    </article>
+{% endblock %}
+```
+{% endraw %}
+
+Men hur använder du då en samling som posts? Jo, här kan vi använda den för att presentera en lista med alla inlägg på en sida. Vi kan använda `collections.posts` som innehåller samtliga inlägg (eller filer) som `posts` mappen innehåller. Vi kan sedan iterera över denna lista för att skapa innehållet. 
+
+Skapa en ny index-fil i roten av posts mappen som heter `index.md`.
+
+{% filename "posts/index.md" %}
+{% raw %}
+```markdown
+---
+title: Blogg
+layout: layout.njk
+---
+
+# Blogg
+Här är en lista över alla inlägg:
+<ul>
+{% for post in collections.posts %}
+    <li>
+        <a href="{{ post.url }}">{{ post.data.title }}</a> - <em>{{ post.data.date }}</em>
+    </li>
+{% endfor %}
+</ul>
+```
+{% endraw %}
+
+Så på det här viset kan vi använda Eleventys samlingar för att gruppera och hantera relaterat innehåll på vår webbplats. När du nu navigerar till `http://localhost:8080/posts/` så bör du se en lista över alla inlägg med länkar till varje inlägg.
+
+{% alert "info" %}
+Du kan även skapa egna collections i `eleventy.config.js` om du vill gruppera innehåll på andra sätt.
+{% endalert %}
+
+## Datafiler
+
+Eleventy har stöd för datafiler som låter dig separera innehåll från presentation. Datafiler kan vara i format som JSON, JavaScript eller YAML och används för att tillhandahålla data som kan användas i dina mallar.
+
+Datafilerna skapar du i en specifik mapp som heter `_data` i roten av ditt projekt. Skapa mappen:
+
+```bash
+mkdir _data
+```
+
+Skapa sedan en fil i den mappen som heter `site.json`. I denna fil kan vi lägga till allmän data som vi vill använda på vår webbplats, till exempel webbplatsens namn och beskrivning.
+
+{% filename "_data/site.json" %}
+```json
+{
+    "name": "Min Eleventy Webbplats",
+    "description": "En enkel webbplats skapad med Eleventy"
+}
+```
+
+Vi kan nu använda denna data i våra mallar. Öppna `layout.njk` och lägg till webbplatsens namn i `<title>`-taggen och beskrivningen i `<body>`.
+
+{% filename "_includes/layout.njk" %}
+{% raw %}
+```html
+<head>
+    <title>{{ site.name }} - {{ title }}</title>
+</head>
+<body>
+    <header>
+        <h1>{{ site.name }}</h1>
+        <p>{{ site.description }}</p>
+    </header>
+    {{ content | safe }}
+</body>
+```
+{% endraw %}
+
+Spara filen och uppdatera din webbläsare. Du bör nu se webbplatsens namn och beskrivning på varje sida.
+
+### Datafil för navigering
+
+Vi kan även skapa en datafil för att hantera navigeringen på vår webbplats. Skapa en ny fil i `_data`-mappen som heter `navigation.json`.
+
+{% filename "_data/navigation.json" %}
+```json
+[
+    { "title": "Hem", "url": "/" },
+    { "title": "Blogg", "url": "/posts/" },
+    { "title": "Om", "url": "/about/" }
+]
+```
+
+Vi kan nu använda denna navigationsdata i vår layout för att skapa en navigeringsmeny. Det gör vi genom att kombinera det vi lärt oss om datorfiler och hur vi skriver loopar i Nunjucks. Öppna `layout.njk` och lägg till följande kod i `<body>`-sektionen, kanske ovanför {% raw %}`{{ content }}`{% endraw %}.
+
+{% filename "_includes/layout.njk" %}
+{% raw %}
+```html
+<nav>
+    <ul>
+    {% for item in navigation %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+    {% endfor %}
+    </ul>
+</nav>
+``` 
+{% endraw %}
+
+Spara filen och uppdatera din webbläsare. Du bör nu se en navigeringsmeny med länkar till Hem, Blogg och Om.
+
+### Include
+
+Föregående exempel med navigationen är ett utmärkt exempel på när vi kan använda includes. Om vi har en del av vår layout som återkommer på flera sidor, som en navigeringsmeny eller en sidfot, kan vi skapa en separat fil för denna del och inkludera den i vår layout. Skapa en ny fil i `_includes`-mappen som heter `nav.njk`.
+
+Flytta sedan innehållet för navigationsmenyn från `layout.njk` till `nav.njk`.
+
+{% filename "_includes/nav.njk" %}
+{% raw %}
+```html
+<nav>
+    <ul>
+    {% for item in navigation %}
+        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+    {% endfor %}
+    </ul>
+</nav>
+```
+{% endraw %}
+
+Vi kan nu inkludera denna fil i vår layout med hjälp av Nunjucks {% raw %}`{% include %}`{% endraw %}-taggen. Öppna `layout.njk` och ersätt navigationskoden med följande rad:
+
+{% filename "_includes/layout.njk" %}
+{% raw %}
+```html
+{% include "nav.njk" %}
+```
+{% endraw %}
+
+Spara filen och uppdatera din webbläsare. Du bör fortfarande se navigeringsmenyn på din webbplats.
+
+### Testfrågor
+
+1. Vad är en datafil i Eleventy och hur används den?
+2. Hur kan du skapa en navigeringsmeny med hjälp av datafiler och includes?
+3. Vad är fördelen med att använda includes i din layout?
+4. Hur kan du använda samlingar för att hantera relaterat innehåll på din webbplats?
