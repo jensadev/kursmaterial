@@ -1,7 +1,7 @@
 ---
 title: Express
 summary: Lär dig grunderna i Express, hur du skapar en webbserver och hanterar statiska filer.
-tags: [express, javascript]
+tags: ["express", "javascript"]
 eleventyNavigation:
     key: express
     parent: webbserver
@@ -29,7 +29,7 @@ Vi kommer att installera Express i samma projekt/repo som tidigare. Om du inte h
 För att installera Express så kör vi följande kommando i terminalen:
 
 {% alert "warning" %}
-Du måste ha kört `npm init -y` för att skapa en `package.json` fil innan du kan installera Express.
+Du måste ha kört <code>npm init -y</code> för att skapa en <code>package.json</code> fil innan du kan installera Express.
 {% endalert %}
 
 ```bash
@@ -72,8 +72,8 @@ För att skicka svar från servern så använder vi `app.get()` metoden. Den tar
 
 {% filename "server.js" %}
 ```js
-app.get("/", (request, response) => {
-  response.send("Hello World!")
+app.get("/", (req, res) => {
+  res.send("Hello World!")
 })
 ```
 

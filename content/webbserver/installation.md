@@ -1,7 +1,7 @@
 ---
 title: Installation
 summary: För att komma igång och skriva en webbserver behöver vi installera några verktyg och program.
-tags: [installation, wsl, nvm, linux]
+tags: ["installation", "wsl", "nvm", "linux"]
 eleventyNavigation:
     key: installation
     order: 1

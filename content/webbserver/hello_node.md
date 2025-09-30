@@ -1,7 +1,7 @@
 ---
 title: Node
 summary: Lär dig grunderna i Node.js, hur du sätter upp ett projekt och använder Nodemon för utveckling.
-tags: [node, javascript, npm, nodemon]
+tags: ["node", "javascript", "npm", "nodemon"]
 eleventyNavigation:
     key: node
     parent: webbserver

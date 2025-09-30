@@ -1,7 +1,7 @@
 ---
 title: Nunjucks
 summary: Lär dig hur du använder Nunjucks som templating språk i Express för att skapa dynamiska HTML-sidor.
-tags: [nunjucks, express, javascript]
+tags: ["nunjucks", "express", "javascript", "layout"]
 eleventyNavigation:
     key: nunjucks
     parent: webbserver
@@ -72,8 +72,8 @@ För att rendera en vy så ändrar vi i vår `server.js` fil och lägger till en
 
 {% filename "server.js" %}
 ```js
-app.get("/", (request, response) => {
-  response.render("index.njk")
+app.get("/", (req, res) => {
+  res.render("index.njk")
 })
 ```
 
@@ -94,21 +94,32 @@ För att skicka data till vyn så kan vi ändra vår route så här:
 
 {% filename "server.js" %}
 ```js
-app.get("/", (request, response) => {
-  const data = {
-    title: "Hello Nunjucks",
-    message: "Welcome to my Express server with Nunjucks!"
-  }
-  response.render("index.njk", data)
+app.get("/", (req, res) => {
+    res.render("index.njk", {
+        title: "Hello Nunjucks",
+        message: "Welcome to my Express server with Nunjucks!"
+    })
 })
 ```
 
 Nu kan vi använda `title` och `message` i vår Nunjucks-fil. Ändra din `index.njk` fil så här:
 
 {% filename "index.njk" %}
+{% raw %}
 ```html
 <h1>{{ title }}</h1>
 <p>{{ message }}</p>
 ```
+{% endraw %}
 
 Nu kommer Nunjucks att rendera `title` och `message` från vårt dataobjekt i HTML-sidan. Du kan även lägga till fler variabler i dataobjektet och använda dem i din Nunjucks-fil.
+
+## Testfrågor
+
+1. Vad är Nunjucks och varför används det?
+2. Förklara vad XSS är och hur Nunjucks hjälper till att skydda mot det.
+3. Hur skriver du ut en variabel i en Nunjucks-fil?
+
+## Kod
+
+Om du har svårt att få allt att samspela och fungera så kan du hitta koden på GitHub: [wsp1-kurs](https://github.com/jensadev/wsp1-kurs/commit/1c71d54898d07a65685da61056db88b2c01a4fdf). Då kan det bli lättare att se hur allt hänger ihop och i vilken ordning saker och ting ska göras.
