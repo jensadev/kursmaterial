@@ -10,6 +10,43 @@ article h4 {
     padding-inline: 0.1em;
 }
 
+/* Animation for h2 elements */
+article h1, article h2 {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInFromLeft 0.8s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% entry 80%;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    70% {
+        opacity: 1;
+        transform: translateX(8px); /* Overshoot to the right */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Settle back to original position */
+    }
+}
+
+/* Fallback for browsers without view() timeline support */
+@supports not (animation-timeline: view()) {
+    article h2 {
+        opacity: 1;
+        transform: translateX(0);
+        animation: none;
+    }
+    
+    article h2.animate-in {
+        animation: slideInFromLeft 0.8s ease-out forwards;
+    }
+}
+
 article>p>code {
     color: var(--color-bg);
     background-color: var(--color-fg);

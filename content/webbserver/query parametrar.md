@@ -13,7 +13,7 @@ eleventyNavigation:
 *[tvätta]: Att tvätta data innebär att rensa data som skickas från användaren för att förhindra skadlig kod och säkerställa att datan är i rätt format.
 *[validera]: Att validera data innebär att kontrollera att datan som skickas från användaren är i rätt format och innehåller rätt värden.
 
-## Query parametrar
+# Query parametrar
 
 För att skicka data till servern så kan vi använda query parametrar. Query parametrar skickas i URL:en och kan användas för att skicka data till servern.
 
@@ -161,6 +161,10 @@ Nu är våra routes separerade från server filen. Det ger oss en tydligare stru
 
 ## Testfrågor
 
+1. Vad är en query parameter och hur används den i en URL?
+2. Hur kan du hämta query parametrar i en Express route?
+3. Vad är middleware i Express och hur används det?
+4. Vad är fördelarna med att separera routes i olika filer?
 
 ## Kod 
 

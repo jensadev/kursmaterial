@@ -8,7 +8,7 @@ eleventyNavigation:
     order: 7
 ---
 
-## En sökfunktion med query parameter
+# En sökfunktion med query parameter
 
 Lite vip just nu, jag skriver om det här avsnittet.
 
