@@ -49,8 +49,10 @@ nav ul {
     z-index: 100;
 }
 
-.nav-sub-list > li > ul > .level-2:first-child {
-    padding-top: var(--space-xs);
+.nav-sub-list > li > ul > .level-2:nth-child(1 of .level-2) {
+    margin-top: var(--space-2xs);
+    border-top: 2px solid var(--color-gray);
+    padding-top: var(--space-2xs);
 }
 
 .nav-sub-list>li:hover>ul,

@@ -45,6 +45,7 @@
     --color-purple: #c392ff;
     --color-yellow: #ffc120;
     --color-blue: #7292f7;
+    --color-gray: color-mix(in srgb, var(--color-dark) 50%, var(--color-light) 50%);
 
 
     --color-fg: var(--color-dark);

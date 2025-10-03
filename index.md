@@ -13,6 +13,15 @@ Här hittar du samlat kursmaterial för mina kurser.
 - [Materialet på GitHub](https://github.com/jensadev/kursmaterial)
 - [Hittat ett fel eller har du synpunkter?](https://github.com/jensadev/kursmaterial/issues)
 
+## Om kursmaterialet
+
+Materialet är uppdelat efter varje ämne. Under varje ämnet så finns det flera områden med material som vi arbetar med. Du finner förklaringar. kod och instruktioner för varje område.
+I menyerna så finns det en avgränsning i några av ämnena, den över delen är nivå 1 och den undre delen är nivå 2.
+
+{% alert "info" %}
+Det är jätteviktigt att du följer med och skriver alla exempel när du lär dig koda. 
+{% endalert %}
+
 ## Utvecklingsmiljö
 
 För allt material på den här sidan så rekommenderar jag att du använder [Visual Studio Code](https://code.visualstudio.com/) som IDE (Integrated Development Environment).
