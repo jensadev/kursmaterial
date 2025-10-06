@@ -102,3 +102,46 @@ Så på det här viset kan vi använda Eleventys samlingar för att gruppera och
 {% alert "info" %}
 Du kan även skapa egna collections i `eleventy.config.js` om du vill gruppera innehåll på andra sätt.
 {% endalert %}
+
+## Tags och kategorier
+
+Eleventy har även inbyggt stöd för att filtrera innehåll baserat på tags och kategorier. Detta görs genom att lägga till en `tags`-frontmatter i dina Markdown-filer.
+
+{% filename "posts/post1.md" %}
+{% raw %}
+```markdown
+---
+title: "Första inlägget"
+date: 2023-01-01
+tags: ["introduktion", "eleventy"]
+---
+
+Detta är innehållet i mitt första inlägg.
+``` 
+{% endraw %}
+
+Likt hur vi använde `collections.posts` för att hämta alla inlägg, så kan vi använda `collections.tagName` för att hämta alla inlägg med en specifik tagg. Om vi till exempel vill skapa en sida som listar alla inlägg med taggen "eleventy", kan vi skapa en ny fil som heter `eleventy.md` i roten av vårt projekt.
+
+{% filename "eleventy.md" %}
+{% raw %}
+```markdown
+---
+title: Inlägg om Eleventy
+layout: layout.njk
+---
+
+# Inlägg om Eleventy
+Här är en lista över alla inlägg med taggen "eleventy":
+<ul>
+{% for post in collections.eleventy %}
+    <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+{% endfor %}
+</ul>
+```
+{% endraw %}
+
+När du nu navigerar till `http://localhost:8080/eleventy/` så bör du se en lista över alla inlägg som har taggen "eleventy".
+
+## Sammanfattning
+
+Försök att se likheterna i hur vi arbetar med data för att skapa dynamiskt innehåll i Eleventy. Genom att använda samlingar, tags och kategorier kan vi enkelt organisera och presentera innehåll på vår webbplats på ett strukturerat sätt. Vi får ett kraftfullt verktyg som gör det enkelt att hantera stora mängder innehåll utan att behöva duplicera kod eller struktur.

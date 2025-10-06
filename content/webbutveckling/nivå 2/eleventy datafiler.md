@@ -10,7 +10,7 @@ eleventyNavigation:
 
 ## Datafiler
 
-Eleventy har stöd för datafiler som låter dig separera innehåll från presentation. Datafiler kan vara i format som JSON, JavaScript eller YAML och används för att tillhandahålla data som kan användas i dina mallar.
+Eleventy har stöd för datafiler som låter dig separera innehåll från presentation. Datafiler kan vara i format som JSON, JavaScript eller YAML och används för att tillhandahålla data som kan användas i dina mallar. Det blir likt de `collections` vi lärde oss om i föregående avsnitt.
 
 Datafilerna skapar du i en specifik mapp som heter `_data` i roten av ditt projekt. Skapa mappen:
 
