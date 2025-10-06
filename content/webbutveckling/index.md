@@ -8,8 +8,6 @@ eleventyNavigation:
     order: 0
 ---
 
-# Webbutveckling
-
 Webbutveckling består av två kurser, nivå 1 och nivå 2. Kurserna fokuserar på tekniker som körs i webbläsaren, såsom HTML, CSS och JavaScript.
 
 ## Nivå 1

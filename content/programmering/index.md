@@ -8,8 +8,6 @@ eleventyNavigation:
     order: 0
 ---
 
-## Introduktion
-
 Programmering består av två kurser, nivå 1 och nivå 2.
 
 ## Nivå 1
