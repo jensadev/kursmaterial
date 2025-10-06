@@ -8,4 +8,6 @@ eleventyNavigation:
     order: 5
 ---
 
-# Att upprepa
+## Loopar
+
+En dator är fantastisk på att upprepa saker. Den kan göra samma sak om och om igen utan att bli trött eller uttråkad. I programmering använder vi oss av loopar för att få datorn att upprepa en viss del av koden flera gånger.

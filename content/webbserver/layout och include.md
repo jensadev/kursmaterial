@@ -9,8 +9,6 @@ eleventyNavigation:
 *[templat]: En templat är en fördefinierad struktur eller mall som används för att skapa dokument, webbsidor eller andra typer av innehåll. Templat kan innehålla platshållare för variabler och dynamiskt innehåll som fylls i när templaten används.
 *[objekt]: Ett objekt är en samling av egenskaper och värden som representerar en enhet eller koncept. I programmering används objekt för att organisera och strukturera data på ett meningsfullt sätt.
 
-# Layout och includes
-
 En av fördelarna med att arbeta med en templat-motor som Nunjucks är att vi kan återanvända kod för att skapa enhetliga sidor. Detta gör vi genom att använda layouts och includes.
 
 ## Layouts

@@ -13,7 +13,7 @@ eleventyNavigation:
 *[tvätta]: Att tvätta data innebär att rensa data som skickas från användaren för att förhindra skadlig kod och säkerställa att datan är i rätt format.
 *[validera]: Att validera data innebär att kontrollera att datan som skickas från användaren är i rätt format och innehåller rätt värden.
 
-# Query parametrar
+## Introduktion
 
 För att skicka data till servern så kan vi använda query parametrar. Query parametrar skickas i URL:en och kan användas för att skicka data till servern.
 

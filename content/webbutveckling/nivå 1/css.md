@@ -8,4 +8,6 @@ eleventyNavigation:
     order: 2
 ---
 
-# css
+## Introduktion
+
+Cascading Style Sheets (CSS) är ett stilmallsspråk (eng. stylesheet language) som används för att beskriva hur HTML-element ska visas på skärmen, i ett dokument eller i andra medier. CSS används för att styra layouten av flera webbsidor samtidigt.

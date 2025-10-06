@@ -6,8 +6,6 @@ eleventyNavigation:
     key: kursmaterial
 ---
 
-# Välkommen
-
 Här hittar du samlat kursmaterial för mina kurser.
 
 - [Materialet på GitHub](https://github.com/jensadev/kursmaterial)

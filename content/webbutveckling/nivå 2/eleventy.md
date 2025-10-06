@@ -11,7 +11,7 @@ eleventyNavigation:
 *[API]: Application Programming Interface, ett sätt för olika program att kommunicera med varandra.
 *[ramverk]: En uppsättning verktyg och bibliotek som förenklar utvecklingen av webbapplikationer.
 
-# Eleventy
+## En webbplatsgenerator
 
 [Eleventy](https://www.11ty.dev/) är en statisk webbplatsgenerator med syfte att förenkla och hjälpa dig att skapa optimerade webbplatser. Det är ett verktyg som omvandlar mallar och innehåll till statiska HTML-filer, vilket gör det möjligt att bygga webbplatser utan behov av en traditionell server.
 Ibland kallas ramverk som Eleventy för ett "JAMstack"-ramverk, där JAM står för JavaScript, API:er och Markup (HTML).

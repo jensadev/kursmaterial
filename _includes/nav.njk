@@ -1,0 +1,20 @@
+<header class="{% if tags[0] %}{{ tags[0] }} {% endif %}region">
+    <nav class="wrapper">
+        {% include "search.njk" %}
+        {% set navPages = collections.all | eleventyNavigation %}
+        {% macro renderNavListItem(entry) -%}
+        <li {% if entry.data.tags and 'nivå 2' in entry.data.tags %}class="level-2"{% endif %}>
+            <a href="{{ entry.url | url }}">{{ entry.title | capitalize }}</a>
+            {%- if entry.children.length -%}
+            <ul class="nav-sub-list">
+                {%- for child in entry.children %}{{ renderNavListItem(child) }}{% endfor -%}
+            </ul>
+            {%- endif -%}
+        </li>
+        {%- endmacro %}
+        
+        <ul class="nav-list">
+            {%- for entry in navPages %}{{ renderNavListItem(entry) }}{%- endfor -%}
+        </ul>
+    </nav>
+</header>

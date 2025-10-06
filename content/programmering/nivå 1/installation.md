@@ -12,9 +12,9 @@ eleventyNavigation:
 *[interaktiv miljö]: En miljö där vi kan skriva och köra kod direkt  
 *[path]: En lista med kataloger där operativsystemet letar efter program att köra  
 
-# Installation
-
 En förutsättning för att vi ska kunna programmera är att vi kan köra kod i en interaktiv miljö, till exempel en terminal eller någon form av online-miljö. Det kan även vara så att vi måste installera programvara för att kunna kompilera och köra koden.
+
+## Python
 
 I det här materialet kommer vi att använda Python som programspråk. Du kan köra Python i en interaktiv miljö online, som [online python](https://www.online-python.com), men för materialet är det bra att du installerar Python på din dator.
 

@@ -8,9 +8,9 @@ eleventyNavigation:
     order: 7
 ---
 
-# En sökfunktion med query parameter
+## Introduktion
 
-Lite vip just nu, jag skriver om det här avsnittet.
+Vi kan nu kombinera det vi har lärt oss om Nunjucks och Express för att skapa en sökfunktion med query parameter.
 
 ## Datastrukturer, objekt och json
 

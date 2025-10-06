@@ -12,11 +12,12 @@ eleventyNavigation:
 *[ESM]: ECMAScript Modules, ett modulformat för JavaScript som använder `import` och `export` syntax.
 *[CommonJS]: Ett äldre modulformat för JavaScript som använder `require` och `module.exports` syntax.
 
-# Node
-
-Innan du fortsätter så se till att du har installerat node.js med NVM, se föregående avsnitt, [installation](../installation).
 
 ## Kom igång med Node
+
+{% alert "warning" %}
+Innan du fortsätter så se till att du har installerat node.js med NVM, se föregående avsnitt, <a href="../installation">Installation</a>.
+{% endalert %}
 
 Skapa först en ny mapp för ditt projekt och navigera in i den. Du kan använda terminalen i Ubuntu eller Windows Terminal.
 

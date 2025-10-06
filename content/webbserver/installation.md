@@ -8,9 +8,6 @@ eleventyNavigation:
     parent: webbserver
 ---
 
-
-# Installation
-
 För att komma igång och skriva en webbserver behöver vi installera några verktyg och program. 
 
 ## WSL2

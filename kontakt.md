@@ -4,8 +4,6 @@ layout: page.njk
 toc: false
 ---
 
-# Kontakt
-
 Jag som har skapat den här sidan heter Jens Andreasson och jag är lärare på NTI Gymnasiet i Umeå.
 
 Du kan nå mig på [jens.andreasson@ntig.se](mailto:jens.andreasson@ntig.se).
