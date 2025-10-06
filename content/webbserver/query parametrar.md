@@ -1,5 +1,6 @@
 ---
 title: Query parametrar
+summary: I denna del lär vi oss hur vi kan använda query parametrar för att skicka data till servern. Vi går även igenom hur vi kan använda middleware för att logga requests och hantera 404 sidor.
 tags: ["query", "params", "express", "javascript", "middleware", "routes", "logging"]
 eleventyNavigation:
     key: query parametrar

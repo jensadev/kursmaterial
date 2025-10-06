@@ -1,5 +1,6 @@
 ---
 title: Layout och includes
+summary: När vi arbetar med en templat-motor som Nunjucks kan vi återanvända kod för att skapa enhetliga sidor. Detta gör vi genom att använda layouts och includes.
 tags: ["layout", "includes", "nunjucks"]
 eleventyNavigation:
     key: layout och includes

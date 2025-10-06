@@ -1,6 +1,7 @@
 ---
 title: Eleventy
-tags: ["eleventy"]
+tags: ["eleventy", "11ty"]
+summary: En introduktion till Eleventy, en statisk webbplatsgenerator som hjälper dig att skapa snabba och optimerade webbplatser med enkelhet och flexibilitet.
 eleventyNavigation:
     key: eleventy
     parent: webbutveckling

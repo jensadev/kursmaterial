@@ -1,6 +1,6 @@
 ---
 title: Installation
-summary: Installera
+summary: För den här kursen så behöver du installera Python på din dator. Här hittar du instruktioner för hur du installerar Python.
 tags: ["python"]
 eleventyNavigation:
     key: installation

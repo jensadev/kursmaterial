@@ -2,6 +2,10 @@ nav {
     --region-space-top: var(--space-m-l);
     --region-space-bottom: var(--space-m-l);
     font-family: var(--font-display);
+
+    a {
+        line-height: 1;
+    }
 }
 
 nav ul {

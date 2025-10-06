@@ -1,5 +1,5 @@
 ---
-title: css
+title: CSS
 summary: CSS är ett språk där vi kan beskriva hur HTML-element ska visas på skärmen.
 tags: ["css"]
 eleventyNavigation:
