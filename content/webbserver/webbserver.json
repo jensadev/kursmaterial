@@ -1,5 +1,5 @@
 {
     "layout": "page.njk",
-    "tags": ["webbserverprogrammering"],
+    "tags": ["webbserver", "webbserverprogrammering"],
     "permalink": "/webbserver/{{ title | slug }}/"
 }

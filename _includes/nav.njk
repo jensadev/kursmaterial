@@ -3,7 +3,8 @@
         {% include "search.njk" %}
         {% set navPages = collections.all | eleventyNavigation %}
         {% macro renderNavListItem(entry) -%}
-        <li {% if entry.data.tags and 'nivå 2' in entry.data.tags %}class="level-2"{% endif %}>
+        <li 
+            {% if entry.data.tags and 'nivå 2' in entry.data.tags %}class="level-2{% if entry.title == tags[0] %} active-section{% endif %}"{% elif entry.title == tags[0] %}class="active-section"{% endif %}>
             <a href="{{ entry.url | url }}">{{ entry.title | capitalize }}</a>
             {%- if entry.children.length -%}
             <ul class="nav-sub-list">
