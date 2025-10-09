@@ -1,9 +1,9 @@
 ---
-title: HTML
+title: HTML - vad är det?
 summary: HTML är standardmärkspråket för att skapa webbsidor och webbapplikationer.
 tags: ["html"]
 eleventyNavigation:
-    key: html
+    key: html - vad är det?
     parent: webbutveckling
     order: 1
 ---
