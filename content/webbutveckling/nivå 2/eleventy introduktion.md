@@ -5,7 +5,7 @@ summary: En introduktion till Eleventy, en statisk webbplatsgenerator som hjälp
 eleventyNavigation:
     key: eleventy introduktion
     parent: webbutveckling
-    order: 10
+    order: 20
 ---
 
 *[webbplatsgenerator]: Ett verktyg som automatiskt skapar en webbplats från olika filer och mallar.

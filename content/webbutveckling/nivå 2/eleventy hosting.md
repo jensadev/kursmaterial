@@ -5,7 +5,7 @@ summary: Eftersom Eleventy är en webbplatsgenerator så kan vi automatisera byg
 eleventyNavigation:
     key: eleventy hosting
     parent: webbutveckling
-    order: 19
+    order: 29
 ---
 
 Så...

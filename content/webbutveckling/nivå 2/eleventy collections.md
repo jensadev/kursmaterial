@@ -5,7 +5,7 @@ summary: I eleventy kan vi organisera innehåll i samlingar (collections) för a
 eleventyNavigation:
     key: eleventy collections
     parent: webbutveckling
-    order: 12
+    order: 22
 ---
 
 ## Samlingar

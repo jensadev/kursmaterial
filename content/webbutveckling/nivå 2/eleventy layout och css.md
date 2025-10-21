@@ -5,7 +5,7 @@ summary: Hur du skapar och använder layouts och CSS i Eleventy.
 eleventyNavigation:
     key: eleventy layout och css
     parent: webbutveckling
-    order: 11
+    order: 21
 ---
 
 En av de stora styrkorna med Eleventy är dess stöd för layouts och mallar. Det underlättar vårt arbete som utvecklare då vi kan återanvända kod och struktur på flera sidor.

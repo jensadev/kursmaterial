@@ -5,6 +5,6 @@ summary: Ett praktiskt exempel på en landningssida byggd med Eleventy.
 eleventyNavigation:
     key: eleventy landing page
     parent: webbutveckling
-    order: 16
+    order: 26
 ---
 

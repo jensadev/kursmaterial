@@ -5,7 +5,7 @@ summary: I eleventy kan vi använda oss av datafiler för att separera innehåll
 eleventyNavigation:
     key: eleventy datafiler
     parent: webbutveckling
-    order: 13
+    order: 23
 ---
 
 ## Datafiler
