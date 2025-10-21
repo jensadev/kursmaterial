@@ -56,7 +56,7 @@ De olika datatyper har olika egenskaper och det styr hur vi kan använda dem i v
 sum = age + 5
 average = (age + 30) / 2
 # Strängmanipulation
-greeting = "Hello, " + name
+greeting = "Hej, " + name
 ```
 
 I exemplet ovan så visar vi hur vi kan utföra matematiska operationer på heltal och flyttal, samt hur vi kan kombinera strängar för att skapa en hälsningsfras.
@@ -70,7 +70,7 @@ result = name + age  # Detta kommer att orsaka ett fel
 Men vi kan i vissa fall använda strängar i matematiska uttryck, men resultatet blir inte vad vi kanske förväntar oss.
 
 ```python
-phrase = "na"
+phrase = "Na"
 print(phrase * 8 + " Batman!")
 ```
 
@@ -91,17 +91,61 @@ x = 10
 Ibland vill vi att användaren av vårt program ska kunna mata in data. I Python kan vi använda funktionen `input()` för att läsa in text från användaren. Texten som användaren matar in kommer alltid att vara av datatypen sträng (str).
 
 ```python
-name = input("What is your name? ")
-print("Hello, " + name + "!")
+name = input("Vad heter du? ")
+print("Hej, " + name + "!")
 ```
 
 Vi kan även behöva konvertera den inmatade texten till en annan datatyp, till exempel ett heltal eller flyttal, om vi vill använda det i matematiska beräkningar. För att göra detta kan vi använda funktionerna `int()` och `float()`.
 
 ```python
-age = int(input("How old are you? "))
+age = int(input("Hur gammal är du? "))
 next_year_age = age + 1
-print("Next year, you will be " + str(next_year_age) + " years old.")
+print("Nästa år kommer du att vara " + str(next_year_age) + " år gammal.")
 ```
+
+### Omvandling mellan datatyper
+
+I exemplet ovan så använde vi funktionen `int()` för att konvertera den inmatade texten till ett heltal, så att vi kunde lägga till 1 för att räkna ut användarens ålder nästa år. Vi använde också funktionen `str()` för att konvertera det beräknade värdet tillbaka till en sträng, så att vi kunde skriva ut det tillsammans med annan text.
+
+{% alert "info" %}
+Det är viktigt att komma ihåg att input alltid returnerar en sträng, så om vi vill använda inmatad data i matematiska operationer måste vi konvertera den till rätt datatyp först.
+{% endalert  %}
+
+### Utökad tilldelning
+
+I exemplet ovan så använde vi operatorn `+` för att lägga ihop två värden och sedan tilldela resultatet till en ny variabel `next_year_age`. I Python kan vi också använda utökad tilldelning för att göra detta på ett mer kompakt sätt.
+
+```python
+age = 25
+age += 1  # Detta är samma som age = age + 1
+print("Nästa år kommer du att vara " + str(age) + " år gammal.")
+```
+
+Detta fungerar för alla aritmetiska operatorer, till exempel +, -, *, /, och %.
+
+## Operatorer
+
+I programmering använder vi olika operatorer för att utföra operationer på variabler och värden. Här är några vanliga operatorer i Python (men även i många andra programmeringsspråk):
+
+| Operatorgrupp | Operatorer |
+|---|---|
+| Aritmetiska operatorer | `+`, `-`, `*`, `/`, `%`, `**`, `//` |
+| Tilldelningsoperatorer | `=`, `+=`, `-=`, `*=`, `/=` |
+| Jämförelseoperatorer | `==`, `!=`, `>`, `<`, `>=`, `<=` |
+| Logiska operatorer | `and`, `or`, `not` |
+
+I exemplena ovan har vi redan sett några av dessa operatorer i användning. Operatorerna hjälper oss att manipulera och jämföra data i våra program.
+
+```python
+x = 10
+y = 5
+sum = x + y
+print(f"Summan av {x} och {y} är {sum}.")
+```
+
+{% alert "info" %}
+När du använder en f-string (som i exemplet ovan) kan du direkt infoga variabler och uttryck inom strängen genom att använda `{}`. Detta gör det enklare att formatera utskrifter.
+{% endalert %}
 
 ## Testfrågor
 
