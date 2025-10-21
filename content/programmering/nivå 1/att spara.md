@@ -147,6 +147,8 @@ print(f"Summan av {x} och {y} är {sum}.")
 När du använder en f-string (som i exemplet ovan) kan du direkt infoga variabler och uttryck inom strängen genom att använda `{}`. Detta gör det enklare att formatera utskrifter.
 {% endalert %}
 
+Vi kommer att lära oss mer om operatorer och deras användning avsnitt.
+
 ## Testfrågor
 
 1. Vad är en variabel i programmering?
