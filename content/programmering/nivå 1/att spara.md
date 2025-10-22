@@ -127,7 +127,7 @@ Detta fungerar för alla aritmetiska operatorer, till exempel +, -, *, /, och %.
 
 I programmering använder vi olika operatorer för att utföra operationer på variabler och värden. Här är några vanliga operatorer i Python (men även i många andra programmeringsspråk):
 
-| Operatorgrupp | Operatorer |
+| Typ | Operator |
 |---|---|
 | Aritmetiska operatorer | `+`, `-`, `*`, `/`, `%`, `**`, `//` |
 | Tilldelningsoperatorer | `=`, `+=`, `-=`, `*=`, `/=` |
