@@ -47,7 +47,7 @@ article h1, article h2 {
     }
 }
 
-article>p>code {
+article>p>code, article li>code {
     color: var(--color-bg);
     background-color: var(--color-fg);
     padding-inline: 0.1em;

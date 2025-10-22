@@ -22,7 +22,7 @@ Vi använder här objektet som en mall för att skapa en klass i programmeringss
 
 Objektet, Penna, är i det här fallet klassen eller en ritning som definierar alla pennor. Varje penna som skapas från denna klass kommer att ha samma attribut (färg, längd, märke) och metoder (skriva, rita), men med olika värden för dessa attribut.
 
-### Skillnader mellan "vanlig" programmering och OOP
+## Skillnader mellan "vanlig" programmering och OOP
 
 I procedurell (med det menas att programmet är uppbyggt av en sekvens av instruktioner som körs i tur och ordning) programmering (som du med största sannolikhet är bekant med sedan tidigare) är data och logik ofta separerade. I OOP kombineras data och logik i objekt.
 
@@ -36,16 +36,19 @@ Med objektorienterad programmering skapar vi alltså en grundläggande struktur 
 
 Låt oss säga att du har ett större projekt som hanterar inventarier för ett bibliotek. I en procedurell programmeringsstil skulle du ha:
 
-1. En lista med böcker, där varje bok är en dictionary med olika attribut, `bok1 = {"titel": "Sagan om Ringen", "författare": "Tolkien", "utlånad": False}`.
+1. En lista med böcker, där varje bok är en dictionary med olika attribut: 
+`bok1 = {"titel": "Sagan om Ringen", "författare": "Tolkien", "utlånad": False}`.
 2. Separata funktioner: `låna_ut_bok(bok)`, `lämna_tillbaka_bok(bok)`.
 
-Hur skulle du omvandla detta till en objektorienterad design? Vilken klass skulle du skapa, och vilka attribut och metoder skulle den ha?
+{% alert "info" %}
+Fundera på hur skulle du omvandla detta till en objektorienterad design? Vilken klass skulle du skapa, och vilka attribut och metoder skulle den ha?
+{% endalert %}
 
-I en objektorienterad design skulle du skapa en klass som heter `Bok`. Denna klass skulle ha attribut som `titel`, `författare` och `utlånad`. Dessutom skulle den ha metoder som `låna_ut()` och `lämna_tillbaka()`.
+I en objektorienterad design skulle du sannolikt skapa en klass som heter `Bok`. Denna klass skulle ha attribut som `titel`, `författare` och `utlånad`. Dessutom skulle den ha metoder som `låna_ut()` och `lämna_tillbaka()`.
 
 ### Vinster med omvandling till OOP
 
-I den ursprungliga, procedurella koden kunde du av misstag ha anropat `låna_ut_bok(bok)` på en bok och sedan glömt att uppdatera `utlånad`-attributet på en annan plats i koden. Du kanske också skulle behöva skriva duplicerad kod för att se till att böckernas författare och titlar hanteras korrekt.
+I den ursprungliga, procedurella koden kunde du av misstag ha anropat `låna_ut_bok(bok)` på en bok och sedan glömt att uppdatera `utlånad`-attributet på en annan plats i koden. Du kanske också skulle behöva skriva duplicerad kod för att se till att böckernas författare och titlar hanteras korrekt. Om du vid ett senare tillfälle skulle behöva lägga till fler attribut, som ISBN-nummer eller publiceringsår, skulle du behöva ändra alla objekten och funktionerna som hanterar böcker.
 
 Genom att flytta egenskaper och beteenden in i en klass kan du säkerställa att varje bok-objekt hanterar sin egen status och logik. Detta kallas inkapsling och är en av de grundläggande principerna i OOP. Det gör koden mer robust och minskar risken för fel.
 

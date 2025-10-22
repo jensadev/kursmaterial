@@ -1,9 +1,9 @@
 ---
-title: OOP - Metoder och inkapsling
+title: OOP - Inkapsling
 summary: Den andra av delen i objektorienterad programmering utifrån de fyra grundpelarna i OOP.
 tags: ["oop", "metoder", "inkapsling", "fyra grundpelare"]
 eleventyNavigation:
-    key: oop - metoder och inkapsling
+    key: oop - inkapsling
     parent: programmering
     order: 22
 ---
