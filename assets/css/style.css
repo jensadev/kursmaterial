@@ -12,6 +12,8 @@
 @import url('_components/_header.css');
 @import url('_components/_alert.css');
 @import url('_components/_footer.css');
+@import url('_components/_prev-next.css');
+@import url('_components/_button.css');
 @import url('_utilities/_skip-link.css');
 @import url('_utilities/_sr-only.css');
 @import url('_utilities/_hidden.css');

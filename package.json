@@ -26,8 +26,10 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.1",
     "@11tyrocks/eleventy-plugin-emoji-readtime": "^1.0.1",
     "@thedigitalman/eleventy-plugin-toc-a11y": "^2.1.0",
+    "@toycode/markdown-it-class": "^1.2.4",
     "elasticlunr": "^0.9.5",
     "markdown-it-abbr": "^2.0.0",
-    "markdown-it-anchor": "^9.2.0"
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-link-attributes": "^4.0.1"
   }
 }

@@ -6,6 +6,25 @@ import emojiReadTime from "@11tyrocks/eleventy-plugin-emoji-readtime"
 import markdownIt from "markdown-it"
 import markdownItAnchor from "markdown-it-anchor"
 import markdownItAbbr from "markdown-it-abbr"
+import markdownItLinkAttributes from 'markdown-it-link-attributes'
+import markdownItClass from '@toycode/markdown-it-class';
+
+const slugifyString = str => {
+    return slugify(str, {
+        replacement: '-',
+        remove: /[#,&,+()$~%.'":*¿?¡!<>{}]/g,
+        lower: true
+    });
+}
+
+const next = (array, current) => {
+    const currentIndex = array.findIndex((page) => page.url === current);
+    return array[currentIndex + 1];
+}
+const prev = (array, current) => {
+    const currentIndex = array.findIndex((page) => page.url === current);
+    return array[currentIndex - 1];
+}
 
 const searchFilter = async (collection) => {
     // what fields we'd like our index to consist of
@@ -52,6 +71,8 @@ export default async function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy("./assets")
 
     eleventyConfig.addFilter("searchIndex", searchFilter)
+    eleventyConfig.addFilter("next", next)
+    eleventyConfig.addFilter("prev", prev)
 
     eleventyConfig.addCollection("search", collection => {
         return [...collection.getFilteredByGlob("./content/**/*.md")];
@@ -98,7 +119,28 @@ export default async function (eleventyConfig) {
             breaks: true,
             linkify: true,
             typographer: true,
-        }).use(markdownItAnchor).use(markdownItAbbr)
+        })
+            .use(markdownItAnchor)
+            .use(markdownItAbbr)
+            .use(markdownItAnchor, {
+                slugify: slugifyString,
+                tabIndex: false,
+                permalink: markdownItAnchor.permalink.headerLink({
+                    class: 'heading-anchor'
+                })
+            })
+            .use(markdownItClass, {})
+            .use(markdownItLinkAttributes, [
+                {
+                    // match external links
+                    matcher(href) {
+                        return href.match(/^https?:\/\//);
+                    },
+                    attrs: {
+                        rel: 'noopener'
+                    }
+                }
+            ])
     )
 
     return {

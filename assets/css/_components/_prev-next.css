@@ -1,0 +1,17 @@
+.prev-next {
+    ul {
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        svg {
+            width: var(--step-2);
+            height: var(--step-2);
+        }
+        li:hover {
+            fill: var(--color-bg);
+        }
+    }
+}
