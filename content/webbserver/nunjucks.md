@@ -28,13 +28,18 @@ För att använda nunjucks i express så behöver vi konfigurera express att anv
 
 {% filename "server.js" %}
 ```js
+import nunjucks from "nunjucks"
+
+...
+
 nunjucks.configure("views", {
   autoescape: true,
   express: app
 })
 ```
 
-Det är viktigt att denna kod ligger efter att du har skapat din express app, annars kommer det inte att fungera. Denna kod konfigurerar nunjucks att använda mappen `views` som standardmapp för vyer och att använda `autoescape` för att undvika XSS-attacker.
+Först så importerar vi nunjucks modulen så att vi kan använda den. Sedan så konfigurerar vi nunjucks med `nunjucks.configure()` metoden.
+Det är viktigt att konfigurationen ligger efter att du har skapat din express app, annars kommer det inte att fungera. Denna kod konfigurerar nunjucks att använda mappen `views` som standardmapp för vyer och att använda `autoescape` för att undvika XSS-attacker.
 
 ### XSS-skydd
 
