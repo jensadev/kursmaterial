@@ -12,16 +12,10 @@ Webbutveckling består av två kurser, nivå 1 och nivå 2. Kurserna fokuserar p
 
 ## Nivå 1
 
-<ul>
-{% for item in collections.webbutveckling | orderByNavigation | filterByTag("nivå 1") %}
-    <li><a href="{{ item.url }}">{{ item.data.title }}</a></li>
-{% endfor %}
-</ul>
+{% set course = collections.webbutveckling | filterByTag("nivå 1") %}
+{% include "components/course-nav.njk" %}
 
 ## Nivå 2
 
-<ul>
-{% for item in collections.webbutveckling | orderByNavigation | filterByTag("nivå 2") %}
-    <li><a href="{{ item.url }}">{{ item.data.title }}</a></li>
-{% endfor %}
-</ul>
+{% set course = collections.webbutveckling | filterByTag("nivå 2") %}
+{% include "components/course-nav.njk" %}

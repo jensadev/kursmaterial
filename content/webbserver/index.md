@@ -12,10 +12,5 @@ Materialet för webbserverprogrammering finns bara för nivå 1. Kursen fokusera
 
 ## Nivå 1
 
-<ul>
-{% for item in collections.webbserverprogrammering | orderByNavigation %}
-    {% if item.url != page.url %}
-        <li><a href="{{ item.url }}">{{ item.data.title }}</a></li>
-    {% endif %}
-{% endfor %}
-</ul>
+{% set course = collections.webbserverprogrammering %}
+{% include "components/course-nav.njk" %}
