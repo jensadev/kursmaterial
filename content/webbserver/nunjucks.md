@@ -1,7 +1,7 @@
 ---
 title: Nunjucks
 summary: Lär dig hur du använder Nunjucks som templating språk i Express för att skapa dynamiska HTML-sidor.
-tags: ["nunjucks", "express", "javascript", "layout"]
+tags: ["nunjucks", "express", "javascript", "layout", "template", "view", "render"]
 eleventyNavigation:
     key: nunjucks
     parent: webbserver
@@ -33,8 +33,8 @@ import nunjucks from "nunjucks"
 ...
 
 nunjucks.configure("views", {
-  autoescape: true,
-  express: app
+    autoescape: true,
+    express: app
 })
 ```
 
@@ -76,7 +76,7 @@ För att rendera en vy så ändrar vi i vår `server.js` fil och lägger till en
 {% filename "server.js" %}
 ```js
 app.get("/", (req, res) => {
-  res.render("index.njk")
+    res.render("index.njk")
 })
 ```
 

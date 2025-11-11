@@ -1,7 +1,7 @@
 ---
 title: Query parametrar
 summary: I denna del lär vi oss hur vi kan använda query parametrar för att skicka data till servern. Vi går även igenom hur vi kan använda middleware för att logga requests och hantera 404 sidor.
-tags: ["query", "params", "express", "javascript", "middleware", "routes", "logging"]
+tags: ["query", "params", "express", "javascript", "middleware", "route", "log", "validera", "tvätta", "morgan"]
 eleventyNavigation:
     key: query parametrar
     parent: webbserver
@@ -72,7 +72,7 @@ Med denna ändring behöver vi inte längre skriva in query parametern i URL:en 
 Den data som användaren skickar kan vara skadlig och kan användas för att attackera din server. Det är viktigt att alltid validera och tvätta data som skickas från användaren.
 {% endalert %}
 
-## Logging
+## Logga requests med Morgan
 
 För att logga requests till servern, parametrar och fel så kan vi använda ett paket som heter `morgan`. Morgan är ett middleware som används för att logga request och response i konsolen. Att kunna se vad som händer i servern är viktigt för att kunna felsöka och förstå hur servern används.
 
@@ -93,7 +93,7 @@ app.use(morgan("dev"))
 
 Nu loggas alla request och response i konsolen. Du kan testa det genom att göra en request till servern.
 
-## Använda middleware för 404 sida
+## Hantera felaktiga requests
 
 När vi nu börjar använda params och query så är det viktigt att hantera fel. Om en användare försöker hämta en film som inte finns så vill vi skicka tillbaka en 404 sida. Detta kan vi göra med hjälp av middleware.
 
@@ -103,13 +103,18 @@ Middleware är funktioner som körs innan eller efter en route. Middleware anvä
 
 För att skapa en middleware så skriver vi en funktion som tar tre parametrar, `req`, `res` och `next`. `next` är en funktion som används för att fortsätta till nästa middleware eller route.
 
-För en 404 middleware så redigera din `server.js` fil och lägg till följande kod.
+{% alert "info" %}
+Felet 404 betyder att sidan inte hittades. Det är en HTTP statuskod som skickas tillbaka till klienten när en resurs inte finns på servern.
+Att skapa en 404 sida är viktigt för att ge användaren feedback när de försöker nå en resurs som inte finns.
+{% endalert %}
+
+För att skapa en middleware som hanterar 404 fel så redigera din `server.js` fil och lägg till följande kod.
 
 {% filename "server.js" %}
 ```js
 function notFound(req, res, next) {
-  res.status(404)
-  res.send("404 Not Found")
+    res.status(404)
+    res.send("404 Not Found")
 }
 ```
 

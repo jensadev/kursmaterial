@@ -32,7 +32,7 @@ const searchFilter = async (collection) => {
         this.addField("title")
         this.addField("summary")
         this.addField("tags")
-        // this.addField("category")
+        this.addField("keywords")
         this.addField("toc")
         this.setRef("id")
     })
@@ -59,6 +59,7 @@ const searchFilter = async (collection) => {
             title: data.title,
             summary: data.summary || "",
             tags: data.tags ? data.tags.toString() : "",
+            keywords: data.keywords ? data.keywords.toString() : "",
             toc: headings.join(", ")
         })
     }

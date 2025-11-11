@@ -5,6 +5,6 @@ tags: ["javascript"]
 eleventyNavigation:
     key: javascript
     parent: webbutveckling
-    order: 20
+    order: 30
 ---
 
