@@ -30,14 +30,14 @@ class Bok:
         self.utgivnings_år = utgivnings_år
 ```
 
-Förutom syntax för att skapa klassen använder vi här en speciell metod som kallas `__init__`. Denna metod kallas en konstruktor (eng. constructor) och används för att initialisera objektets attribut när ett nytt objekt skapas. Parametrarna `titel`, `forfattare` och `ar` används för att sätta värdena för objektets attribut.
+Förutom syntax för att skapa klassen använder vi här en speciell metod som kallas `__init__`. Denna metod kallas en konstruktor (eng. constructor) och används för att initialisera objektets attribut när ett nytt objekt skapas. Parametrarna `titel`, `författare` och `år` används för att sätta värdena för objektets attribut.
 
 ### Self
 
 Inom klassens metoder, inklusive `__init__`, används `self` för att referera till det aktuella objektet. Det är genom `self` som vi kan komma åt och modifiera objektets attribut och metoder.
 
 {% alert "info" %}
-Namnet `self` är unikt för Python. I många andra programmeringsspråk används `this` istället.
+Namnet <code>self</code> är unikt för Python. I många andra programmeringsspråk används <code>this</code> istället.
 {% endalert %}
 
 
